@@ -1,0 +1,62 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title align="center">
+        <img src="{{ dataHome?.logo }}" style="width: 10%;vertical-align: middle;">
+        <span style="color: white;vertical-align: middle;font-size: 30px;">Thai Herbal</span>
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-avatar item-start large>
+        <img src="{{dataHome?.base_url}}/upload/mem/pictures/{{dataProfile?.md_mem_pic}}" style="width: 80px;height: 80px;">
+      </ion-avatar>
+      <h1>{{dataProfile?.md_mem_name}} {{dataProfile?.md_mem_lname}}</h1>
+      <p>{{dataProfile?.md_mem_email}}</p>
+    </ion-item>
+
+    <!-- <ion-item>
+      <ion-icon name="ios-cash-outline" item-start></ion-icon>
+      ยอดเงินคงเหลือ <span item-end><b style="font-size:20px;">1,000.00</b> <b style="color:orange;">฿</b></span>
+    </ion-item> -->
+
+
+  </ion-list>
+
+
+  <!-- <ion-list>
+
+    <button ion-item (click)="openOrder()">
+      <ion-icon name="ios-clock-outline" item-start></ion-icon>
+      ประวัติการทำรายการ
+    </button>
+
+    <button ion-item>
+      <ion-icon name="ios-card" item-start></ion-icon>
+      เติมเงิน
+    </button>
+
+  </ion-list> -->
+
+  <ion-item-group>
+    <ion-item-divider color="light">ตั้งค่า</ion-item-divider>
+    <button ion-item>
+      <ion-icon name="ios-construct-outline" item-start></ion-icon>
+      แก้ไขข้อมูลส่วนตัว
+    </button>
+
+    <button ion-item>
+      <ion-icon name="ios-lock-outline" item-start></ion-icon>
+      เปลี่ยนรหัสผ่าน
+    </button>
+
+    <button ion-item (click)="logout();">
+      <ion-icon name="ios-log-out" item-start></ion-icon>
+      ออกจากระบบ
+    </button>
+  </ion-item-group>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "thb",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title align="center">
+        <img src="{{ dataHome?.logo }}" style="width: 10%;vertical-align: middle;">
+      <span style="color: white;vertical-align: middle;font-size: 30px;">Thai Herbal</span>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="wg-contact">
+    <div class="container">
+      <div class="content">
+        <div class="" align="center" style="color: #ae840d; line-height: 28px; margin-bottom: 15px;">
+          <h2 class="" style="color: #ae840d; font-size: 40px; font-weight: bold;">ติดต่อเรา</h2>
+          <span class="" style="color: #ae840d; font-size: 30px; font-weight: 100; line-height: 28px;">Contact Us</span>
+        </div>
+        <hr style="background-color: #d2b266; width: 30%; height: 2px;">
+        <div class="row">
+            <div class="detail-app">
+              <div class="title"><p class="text-secondary title-mr-bot"><i class="fa fa-building" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;ที่ตั้ง/Address.</p></div>
+              <div class="desc">
+                <p class="text-primary text-ma-top">
+                  {{ dataHome?.contact.address }}
+                </p>
+              </div>
+            </div>
+            <div class="detail-app">
+              <div class="title"><p class="text-secondary title-mr-bot"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;โทรศัพท์/Tel.</p></div>
+              <div class="desc">
+                <p class="text-primary text-ma-top">
+                  <a class="link" href="tel:080026999" style="color: #64903a !important;">{{ dataHome?.contact.tel }}</a>
+                </p>
+              </div>
+            </div>
+            <div class="detail-app">
+              <div class="title"><p class="text-secondary title-mr-bot"><i class="fa fa-fax" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;โทรสาร/Fax.</p></div>
+              <div class="desc">
+                <p class="text-primary text-ma-top">
+                  <a class="link" href="tel:025805733"style="color: #64903a !important;" >{{ dataHome?.contact.fax }}</a>
+                </p>
+              </div>
+            </div>
+            <div class="detail-app">
+              <div class="title"><p class="text-secondary title-mr-bot"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;อีเมล์/Email.</p></div>
+              <div class="desc">
+                <p class="text-primary text-ma-top">
+                  <a class="link" href="mailto:admin@adminthb.com" target="_blank" style="color: #64903a !important;">{{ dataHome?.contact.email }}</a>
+                </p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>  

@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title align="center">
+      <img src="{{ dataHome?.logo }}" style="width: 10%;vertical-align: middle;">
+      <span style="color: white;vertical-align: middle;font-size: 30px;">Thai Herbal</span>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div align="center" style="color: #ae840d; font-weight: 100; line-height: 28px;">
+    <h2 style="color: #ae840d; font-size: 40px; font-weight: bold;">เข้าสู่ระบบ</h2>
+    <span style="color: #ae840d; font-size: 30px; font-weight: 100; line-height: 28px;">Login</span>
+  </div>
+  <hr style="background-color: #d2b266; width: 30%; height: 2px;">
+  <div>
+    <form data-toggle="validator" role="form" class="form-default">
+      <div class="form-group has-feedback">
+        <label class="control-label">อีเมล / Email</label>
+        <div class="block-control">
+          <input class="form-control" type="email" [(ngModel)]="formLogin.member_login_email" id="member_login_email" name="member_login_email" #member_login_email placeholder="" required="">
+          <span class="form-control-feedback" aria-hidden="true"></span>
+        </div>
+      </div>
+      <div class="form-group has-feedback">
+        <label class="control-label">รหัสผ่าน / Password</label>
+        <div class="block-control">
+          <input class="form-control" type="password" [(ngModel)]="formLogin.member_login_password" id="member_login_password" name="member_login_password" #password placeholder="" required="">
+          <span class="form-control-feedback" aria-hidden="true"></span>
+        </div>
+      </div>
+      <div class="forgot-box">
+        <a class="link" href="{$ul}/member/forgot">
+          ลืมรหัสผ่าน / Forgot Password
+        </a>
+      </div>
+    </form>
+  </div>
+  <div class="btn-box">
+    <ion-grid>
+      <ion-row>
+          <ion-col>
+              <button class="btn btn-primary" (click)="register();">
+                  สมัครสมาชิก
+                  <p>Register</p>
+                </button>
+          </ion-col>
+          <ion-col>
+              <button class="btn btn-secondary" (click)="login();">
+                  เข้าสู่ระบบ
+                  <p>Login</p>
+                </button>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    
+  </div>
+
+  <!-- <ion-list>
+
+    <ion-item style="background-color: #f1f6fb;">
+      <ion-label floating>รหัสผู้ใช้</ion-label>
+      <ion-input type="text" [(ngModel)]="formLogin.users_username" clearInput></ion-input>
+    </ion-item>
+
+    <ion-item style="background-color: #f1f6fb;">
+      <ion-label floating>รหัสผ่าน</ion-label>
+      <ion-input type="password" [(ngModel)]="formLogin.users_password" clearInput></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 style="color:#1766b4;">
+        <span (click)="register();">
+          <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
+          สมัครสมาชิก
+        </span>
+      </ion-col>
+      <ion-col col-6 style="color:#1766b4;" align="right">
+        <span (click)="forgetpassword();">
+          <ion-icon ios="ios-help-circle" md="md-help-circle"></ion-icon>
+          ลืมรหัส
+        </span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <div style="text-align: center;">
+    <button ion-button outline (click)="login();">เข้าสู่ระบบ</button>
+  </div> -->
+
+</ion-content>

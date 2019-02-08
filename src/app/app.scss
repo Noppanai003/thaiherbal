@@ -1,0 +1,57 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+@font-face {
+    font-family: 'db_helvethaica';
+    src: url('../assets/fonts/db_helvethaica_x_li_v3.2-webfont.eot');
+    src: url('../assets/fonts/db_helvethaica_x_li_v3.2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../assets/fonts/db_helvethaica_x_li_v3.2-webfont.woff2') format('woff2'),
+         url('../assets/fonts/db_helvethaica_x_li_v3.2-webfont.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'db_helvethaica';
+    src: url('../assets/fonts/db_helvethaica_x_v3.2-webfont.eot');
+    src: url('../assets/fonts/db_helvethaica_x_v3.2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../assets/fonts/db_helvethaica_x_v3.2-webfont.woff2') format('woff2'),
+         url('../assets/fonts/db_helvethaica_x_v3.2-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'db_helvethaica';
+    src: url('../assets/fonts/db_helvethaica_x_med_v3.2-webfont.eot');
+    src: url('../assets/fonts/db_helvethaica_x_med_v3.2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../assets/fonts/db_helvethaica_x_med_v3.2-webfont.woff2') format('woff2'),
+         url('../assets/fonts/db_helvethaica_x_med_v3.2-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'db_helvethaica';
+    src: url('../assets/fonts/db_helvethaica_x_bd_v3.2-webfont.eot');
+    src: url('../assets/fonts/db_helvethaica_x_bd_v3.2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../assets/fonts/db_helvethaica_x_bd_v3.2-webfont.woff2') format('woff2'),
+         url('../assets/fonts/db_helvethaica_x_bd_v3.2-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+body, span, button, h1, h2, h3, h4, h5, h6, p, ion-item, ion-title,ion-content {
+    font-family: db_helvethaica !important;
+}

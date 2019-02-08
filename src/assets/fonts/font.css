@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'db_helvethaica';
+    src: url('db_helvethaica_x_li_v3.2-webfont.eot');
+    src: url('db_helvethaica_x_li_v3.2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('db_helvethaica_x_li_v3.2-webfont.woff2') format('woff2'),
+         url('db_helvethaica_x_li_v3.2-webfont.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'db_helvethaica';
+    src: url('db_helvethaica_x_v3.2-webfont.eot');
+    src: url('db_helvethaica_x_v3.2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('db_helvethaica_x_v3.2-webfont.woff2') format('woff2'),
+         url('db_helvethaica_x_v3.2-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'db_helvethaica';
+    src: url('db_helvethaica_x_med_v3.2-webfont.eot');
+    src: url('db_helvethaica_x_med_v3.2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('db_helvethaica_x_med_v3.2-webfont.woff2') format('woff2'),
+         url('db_helvethaica_x_med_v3.2-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'db_helvethaica';
+    src: url('db_helvethaica_x_bd_v3.2-webfont.eot');
+    src: url('db_helvethaica_x_bd_v3.2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('db_helvethaica_x_bd_v3.2-webfont.woff2') format('woff2'),
+         url('db_helvethaica_x_bd_v3.2-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
