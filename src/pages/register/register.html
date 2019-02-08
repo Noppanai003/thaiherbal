@@ -1,13 +1,199 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title align="center">
-        <img src="{{ dataHome?.logo }}" style="width: 10%;vertical-align: middle;">
-        <span style="color: white;vertical-align: middle;font-size: 30px;">Thai Herbal</span>
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <ion-title align="center">
+      <img src="{{ dataHome?.logo }}" style="width: 10%;vertical-align: middle;">
+      <span style="color: white;vertical-align: middle;font-size: 30px;">Thai Herbal</span>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
 
 
 <ion-content padding>
+  <div class="register-page">
+    <form data-toggle="validator" role="form" id="formregister" class="form-default" novalidate="true">
+      <div class="container">
+        <div align="center" style="color: #ae840d; font-weight: 100; line-height: 28px !important;">
+          <h2 style="color: #ae840d; font-size: 40px; font-weight: bold !important;">สมัครสมาชิก</h2>
+          <span style="color: #ae840d; font-size: 30px; font-weight: 100; line-height: 28px;">Register</span>
+        </div>
+        <hr style="background-color: #d2b266; width: 30%; height: 2px;">
 
+        <div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group has-feedback">
+                <label class="control-label">ชื่อหน่วยงาน / Institution <span class="red">*</span></label>
+                <div class="block-control">
+                  <input class="form-control" type="text" id="inputOrganize" name="inputOrganize" value="" placeholder=""
+                    data-error="" required="">
+                  <span class="form-control-feedback" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group has-feedback has-success">
+                <label class="control-label">เพศ / Gender <span class="red">*</span></label>
+                <select class="form-control select2-hidden-accessible" size="1" style="width: 100%;" id="inputEducation"
+                  name="inputEducation" tabindex="-1" aria-hidden="true">
+                  <option value="" selected="">กรุณาเลือกเพศ</option>
+                  <option value="5">ชาย</option>
+                  <option value="7">หญิง</option>
+
+                </select>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group has-feedback">
+                <label class="control-label">ชื่อ / Name <span class="red">*</span></label>
+                <div class="block-control">
+                  <input class="form-control" type="text" id="inputName" name="inputName" value="" placeholder=""
+                    data-error="" required="">
+                  <span class="form-control-feedback" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group has-feedback">
+                <label class="control-label">นามสกุล / Surname <span class="red">*</span></label>
+                <div class="block-control">
+                  <input class="form-control" type="text" id="inputlname" name="inputlname" value="" placeholder=""
+                    data-error="" required="">
+                  <span class="form-control-feedback" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group has-feedback">
+                <div class="select-box">
+                  <div class="control-label">การศึกษา / Education <span class="red">*</span></div>
+                  <select class="form-control select2-hidden-accessible" size="1" style="width: 100%;" id="inputEducation"
+                    name="inputEducation" tabindex="-1" aria-hidden="true">
+                    <option value="" selected="">กรุณาเลือกการศึกษา</option>
+                    <option value="5">ประถมศึกษา</option>
+                    <option value="7">มัธยมศึกษาตอนปลาย/อาชีวศึกษา</option>
+                    <option value="8">ปวส.</option>
+                    <option value="9">ปริญญาตรี</option>
+                    <option value="10">ปริญญาโท</option>
+                    <option value="11">ปริญญาเอก</option>
+
+                  </select>
+                </div>
+                <span class="form-control-feedback" aria-hidden="true"></span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group has-feedback">
+                <div class="select-box">
+                  <div class="control-label">อาชีพ / Career <span class="red">*</span></div>
+                  <select class="form-control select2-hidden-accessible" size="1" style="width: 100%;" id="inputCareer"
+                    name="inputCareer" tabindex="-1" aria-hidden="true">
+                    <option value="" selected="">กรุณาเลือกอาชีพ</option>
+                    <option value="12">ข้าราชการ</option>
+                    <option value="13">พนักงานบริษัทเอกชน</option>
+                    <option value="14">ธุรกิจส่วนตัว</option>
+                    <option value="15">นักเรียน/นักศึกษา</option>
+                    <option value="16">อื่นๆ</option>
+
+                  </select>
+                </div>
+                <span class="form-control-feedback" aria-hidden="true"></span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group has-feedback has-error has-danger">
+                <label class="control-label">ที่อยู่ / Address</label>
+                <div class="block-control">
+                  <textarea class="form-control" rows="2" id="inputAddress" name="inputAddress" placeholder=""
+                    data-error=""></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group has-feedback">
+                <label class="control-label">โทรศัพท์ / Telephone <span class="red">*</span></label>
+                <div class="block-control">
+                  <input class="form-control" type="text" id="inputTel" name="inputTel" value="" placeholder="" pattern="^(?:0|\(?\+66\)?\s?|0066\s?)[1-9](?:[\.\-\s]?\d){7,8}$"
+                    data-error="กรุณาระบุเฉพาะตัวเลข 9 หรือ 10 หลัก เช่น 02 580 5733" required="">
+                  <span class="form-control-feedback" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group has-feedback">
+                <label class="control-label">อีเมล / E-mail <span class="red">*</span></label>
+                <div class="block-control">
+                  <input class="form-control" type="email" id="inputEmail" name="inputEmail" value="" placeholder=""
+                    data-error="" required="">
+                  <span class="form-control-feedback" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group has-feedback">
+                <label class="control-label">รหัสผ่าน / Password <span class="red">*</span></label>
+                <div class="block-control">
+                  <input class="form-control" type="password" id="inputPassword" name="inputPassword" data-minlength="8"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="" data-error="ระบุเป็นตัวเลข และอักษรตัวเล็กตัวใหญ่ความยาวอย่างน้อย 8 ตัว"
+                    required="">
+                  <span class="form-control-feedback" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group has-feedback">
+                <label class="control-label">ยืนยันรหัสผ่าน / Password Comfirmation <span class="red">*</span></label>
+                <div class="block-control">
+                  <input class="form-control" type="password" id="inputRepassword" name="inputRepassword"
+                    data-minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="" data-error=""
+                    data-match="#inputPassword" data-match-error="โปรดป้อนรหัสผ่านที่ตรงกัน" required="">
+                  <span class="form-control-feedback" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="checkbox-block">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-1>
+                  <ion-checkbox name="checkterm"></ion-checkbox>
+                </ion-col>
+                <ion-col col-11>
+                  <div class="content" style="margin-left: -15px;">
+                    <span class="red" style="margin-left: -15px;">*</span>
+                    ฉันยอมรับ
+                    <a class="link" href="javascript:void(0)" data-toggle="modal" data-target="#modalTermsTH">ข้อกำหนดและเงื่อนไข
+                      และ นโยบายความเป็นส่วนตัว</a>
+                    ของตำรามาตรฐานยาสมุนไพรไทย / I agree with
+                    <a class="link" href="javascript:void(0)" data-toggle="modal" data-target="#modalTermsEN">Terms
+                      &amp;
+                      Conditions and Privacy Policy</a>
+                    of Thai Herbal Pharmacopoeia
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+        <div class="btn-box">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <button class="btn btn-primary" (click)="register();">
+                  ลงทะเบียน
+                  <p>Sign Up</p>
+                </button>
+              </ion-col>
+              <ion-col>
+                <button class="btn btn-dark" (click)="close();">
+                  ยกเลิก
+                  <p>Cancel</p>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+    </form>
+
+  </div>
 </ion-content>

@@ -1,3 +1,1478 @@
 page-register {
+  .form-default .form-control {
+    line-height: 1em;
+    padding: 10px 15px;
+    font-size: 20px;
+    min-height: 40px;
+    background-color: #fff;
+    border: 1px solid #cccccc;
+    color: #333333;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.05);
+  }
+
+  [role=button],
+  a,
+  area,
+  button,
+  input:not([type=range]),
+  label,
+  select,
+  summary,
+  textarea {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+  }
+
+  .form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  }
+
+
+
+  .form-default .control-label {
+    font-weight: normal;
+    font-size: 20px;
+    color: #9d6d01;
+    margin-bottom: 10px;
+  }
+
+  .form-default .form-group {
+    margin-bottom: 30px;
+  }
+
+  .form-default .form-group {
+    position: relative;
+    margin-bottom: 15px;
+  }
+
+
+
+  .wg-book {
+    height: 795px;
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+    background-image: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/background/bg_book.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .wg-book .inner {
+    padding: 0 80px 0 120px;
+  }
+
+  .wg-book .book {
+    width: 400px;
+    -webkit-box-shadow: 30px 20px 20px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 30px 20px 20px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 30px 20px 20px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .wg-book .content {
+    padding-left: 50px;
+  }
+
+  .wg-book .desc {}
+
+  .wg-book .desc p {
+    font-size: 24px;
+    color: #64903a;
+    line-height: 1.2em;
+    margin-bottom: 0;
+    text-indent: 20px;
+  }
+
+  .wg-book .btn-box {
+    margin-top: 25px;
+  }
+
+  .wg-book .plant {
+    width: 596px;
+    height: 612px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -919px;
+    margin-top: -287px;
+    background: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/asset/plant.png) no-repeat center;
+    background-size: contain;
+  }
+
+  .wg-book .cup {
+    width: 303px;
+    height: 281px;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    margin-left: -798px;
+    margin-bottom: -400px;
+    background: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/asset/cup.png) no-repeat center;
+    background-size: contain;
+  }
+
+
+  .wg-about {
+    height: 500px;
+    padding: 65px 0;
+    position: relative;
+    overflow: hidden;
+    background-image: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/background/bg_about.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .wg-about .content {
+    padding-right: 450px;
+    padding-left: 120px;
+  }
+
+  .wg-about .desc {}
+
+  .wg-about .desc p {
+    font-size: 24px;
+    color: #64903a;
+    line-height: 1.2em;
+    margin-bottom: 0;
+    text-indent: 20px;
+  }
+
+  .wg-about .plant {
+    width: 686px;
+    height: 611px;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    margin-right: -839px;
+    margin-top: -232px;
+    background: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/asset/plant2.png) no-repeat center;
+    background-size: contain;
+  }
+
+  .wg-about .btn-box {
+    margin-top: 0;
+  }
+
+  .wg-contact {
+    padding: 30px 0;
+    background-image: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/background/bg_contact.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .wg-contact .whead {
+    margin-bottom: 50px;
+  }
+
+  .wg-contact .content {
+    text-align: center;
+  }
+
+  .wg-contact .desc-box {
+    text-align: left;
+    display: table;
+  }
+
+  .wg-contact .desc-box>div {
+    display: table-cell;
+    vertical-align: top;
+  }
+
+  .wg-contact .desc-box+.desc-box {
+    margin-top: 15px;
+  }
+
+  .wg-contact .desc-box .title {
+    width: 90px;
+  }
+
+  .wg-contact .desc-box .desc {
+    padding-left: 20px;
+  }
+
+  .wg-contact .desc-box p {
+    font-size: 24px;
+    line-height: 1.2em;
+    margin-bottom: 0;
+  }
+
+  .wg-contact .desc-box .link {
+    color: #3e6717;
+  }
+
+
+
+  .login-box {
+    width: 866px;
+    height: 621px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 60px 130px 90px 130px;
+    text-align: center;
+    background-image: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/background/bg_login_paper.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .form-default {
+    text-align: left;
+  }
+
+  .form-default .form-group {
+    margin-bottom: 30px;
+  }
+
+  .form-default .form-group+.form-group {
+    margin-bottom: 15px;
+  }
+
+  .forgot-box {
+    text-align: right;
+  }
+
+  .forgot-box .link {
+    font-size: 18px;
+    color: #598034;
+    font-weight: 500;
+  }
+
+  .forgot-box .link:hover {
+    color: #ae840d
+  }
+
+  .btn-box {
+    padding-top: 40px;
+    text-align: center;
+  }
+
+  .btn-box .btn {
+    min-width: 100%;
+  }
+
+
+
+  .forgot-page {
+    /* height: calc(100vh - 105px - 105px); */
+    padding: 55px 0;
+    position: relative;
+    overflow: hidden;
+    background-image: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/background/bg_4gotpass.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
+  }
+
+  .forgot-page .whead {
+    margin-bottom: 45px;
+  }
+
+  .forgot-page .form-default .form-group {
+    margin-bottom: 25px;
+  }
+
+  .forgot-page .btn-box {
+    padding-top: 25px;
+  }
+
+  .forgot-page .btn-box .btn+.btn {
+    margin-left: 20px;
+  }
+
+
+
+  .register-page {
+    position: relative;
+    overflow: hidden;
+    background-image: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/background/bg_register.png);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+  }
+
+  .register-page .pencil {
+    position: absolute;
+    top: 0;
+    right: 50%;
+    margin-right: -800px;
+    margin-top: -232px;
+    width: 516px;
+    height: 514px;
+    background: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/asset/pencil.png) no-repeat center;
+    background-size: contain;
+  }
+
+  .register-page .form-default .form-group {
+    margin-bottom: 25px;
+  }
+
+  .register-page .radio-list {
+    padding: 5px 0;
+  }
+
+  .register-page .radio-list li+li {
+    margin-left: 40px;
+  }
+
+  .register-page .checkbox-block {
+    margin-bottom: 10px;
+  }
+
+  .register-page .checkbox-block .content {
+    padding-left: 24px;
+    font-size: 24px;
+    color: #333333;
+    line-height: 1;
+  }
+
+  .register-page .checkbox-block .content .red {
+    color: #FF0000;
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 0;
+  }
+
+  .register-page .checkbox-block .content .link {
+    font-weight: 500;
+    color: #598034;
+    text-decoration: underline;
+  }
+
+  .register-page .checkbox-block .content .link:hover {
+    color: #9d6d01;
+  }
+
+  .register-page .btn-box {
+    padding-top: 0;
+  }
+
+  .register-page .btn-box .btn+.btn {
+    margin-left: 20px;
+  }
+
+
+
+  .modal-dialog.Terms-box {
+    width: 1185px;
+    height: 715px;
+  }
+
+  .modal-dialog.Terms-box .modal-body {
+    display: block;
+    background: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/background/bg_terms.jpg) no-repeat top center;
+    height: 715px;
+    background-size: cover;
+  }
+
+  .modal-dialog.Terms-box .modal-body .inner {
+    padding: 45px;
+    display: block;
+    text-align: left;
+  }
+
+  .modal-dialog.Terms-box .modal-body .inner .whead .sub {
+    font-size: 40px;
+  }
+
+  .modal-dialog.Terms-box .modal-body .inner .whead:after {
+    width: 50%;
+  }
+
+  .modal-dialog.Terms-box .modal-body .inner .mcscroll {
+    overflow-y: auto;
+    height: 500px;
+  }
+
+  .modal-dialog.Terms-box .modal-body .inner .content {
+    padding-right: 15px;
+  }
+
+  .modal-dialog.Terms-box .modal-body .inner .desc {
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 0;
+  }
+
+  .modal-dialog.Terms-box .modal-body .inner .desc+.desc {
+    margin-top: 30px;
+  }
+
+
+
+  .book-page {
+    padding: 20px 0;
+    position: relative;
+    overflow: hidden;
+    background-image: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/background/bg_ebook.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
+  }
+
+  .book-page .whead {
+    display: block;
+  }
+
+  .book-page .whead:after {
+    display: none;
+  }
+
+  .book-page .line {
+    background-color: #eaeaea;
+    height: 2px;
+    width: 100%;
+  }
+
+  .book-page .L-col {
+    float: left;
+    width: 295px;
+    position: relative;
+  }
+
+  .book-page .L-menu {
+    box-shadow: 15px 15px 35px 0px rgba(0, 0, 0, 0.02);
+    border-bottom: 1px solid #dddddd;
+  }
+
+  .book-page .L-menu .nav-list>li {
+    position: relative;
+    float: none;
+  }
+
+  .book-page .L-menu .nav-list>li+li {
+    border-top: 1px solid #dddddd;
+  }
+
+  .book-page .L-menu .nav-list>li>a {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 30px;
+    display: block;
+    background-color: #fff;
+    color: #333333;
+  }
+
+  .book-page .L-menu .nav-list>li>a:hover {
+    background-color: #9d6d01;
+    color: #fff;
+  }
+
+  .book-page .L-menu .nav-list>li.active>a {
+    background-color: #9d6d01;
+    color: #fff;
+  }
+
+
+  .book-page .L-menu .nav-list>li.panel {
+    margin-bottom: 0px;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: 0;
+  }
+
+  .book-page .L-menu .nav-list>li.panel>a {
+    background-color: #9d6d01;
+    color: #fff;
+  }
+
+  .book-page .L-menu .nav-list>li.panel>a:before {
+    content: "\f107";
+    font-family: 'FontAwesome';
+    font-size: 18px;
+    position: absolute;
+    z-index: 1;
+    top: 12px;
+    right: 10px;
+    transition: all 200ms ease-out;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.15);
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 50%;
+  }
+
+  .book-page .L-menu .nav-list>li.panel>a.collapsed {
+    background-color: #fff;
+    color: #333333;
+  }
+
+  .book-page .L-menu .nav-list>li.panel>a.collapsed:before {
+    content: "\f105";
+    color: #333333;
+  }
+
+  .book-page .L-menu .nav-list>li.panel>a.collapsed:hover {
+    background-color: #9d6d01;
+    color: #fff;
+  }
+
+  .book-page .L-menu .nav-list>li.panel>a.collapsed:hover:before {
+    color: #fff;
+  }
+
+  .book-page .L-menu .nav-sub {
+    padding: 10px;
+    margin: 0;
+    list-style: none;
+    position: relative;
+  }
+
+  .book-page .L-menu .nav-sub:before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    background-color: #d7d7d7;
+    width: 1px;
+    top: 25px;
+    bottom: 25px;
+    left: 29px;
+  }
+
+  .book-page .L-menu .nav-sub:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  .book-page .L-menu .nav-sub>li {
+    border-top: 1px solid #f5f5f5;
+    position: relative;
+  }
+
+  .book-page .L-menu .nav-sub>li.panel {
+    margin-bottom: 0px;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .book-page .L-menu .nav-sub>li>a {
+    font-size: 16px;
+    line-height: 1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 35px;
+    padding-right: 35px;
+    display: block;
+    color: #333;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .book-page .L-menu .nav-sub>li>a small {
+    font-weight: normal;
+    display: block;
+  }
+
+  .book-page .L-menu .nav-sub>li>a:before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: #d7d7d7;
+    position: absolute;
+    left: 15px;
+    top: 14px;
+    border-radius: 50%;
+  }
+
+  .book-page .L-menu .nav-sub>li>a:hover {}
+
+  .book-page .L-menu .nav-sub>li>a:hover:before {}
+
+  .book-page .L-menu .nav-sub>li.sub>a {
+    background-color: #f5f5f5;
+  }
+
+  .book-page .L-menu .nav-sub>li.sub>a:before {}
+
+  .book-page .L-menu .nav-sub>li.sub>a:after {
+    content: "\f107";
+    font-family: 'FontAwesome';
+    font-size: 20px;
+    line-height: 36px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 20px;
+    transition: all 200ms ease-out;
+    color: #333;
+  }
+
+  .book-page .L-menu .nav-sub>li.sub>a.collapsed {
+    background-color: #f5f5f5;
+    color: #333;
+  }
+
+  .book-page .L-menu .nav-sub>li.sub>a.collapsed:after {
+    content: "\f105";
+    color: #333;
+  }
+
+  .book-page .L-menu .nav-sub>li.sub>a.collapsed:before {
+    background-color: #d7d7d7;
+  }
+
+  .book-page .L-menu .nav-sub>li.sub>a.collapsed:hover {}
+
+  .book-page .L-menu .nav-sub>li.sub>a.collapsed:hover:before {}
+
+  .book-page .L-menu .nav-sub>li.sub>a.collapsed:hover:after {}
+
+  .book-page .L-menu .nav-sub>li.sub>a+.nav-sub>li>a {
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+    color: #333333;
+  }
+
+  .book-page .L-menu .nav-sub>li.sub>a+.nav-sub>li>a:before {
+    display: none;
+  }
+
+  .book-page .L-menu .nav-sub>li.sub>a+.nav-sub>li>a:hover {
+    color: #587f33;
+    background-color: transparent;
+  }
+
+  .book-page .L-menu .nav-sub>li.sub>a+.nav-sub>li.active>a {
+    color: #587f33;
+    background-color: transparent;
+  }
+
+  .book-page .L-menu .nav-sub>li.sub+li.sub {
+    margin-top: 10px;
+  }
+
+  .book-page .L-menu .nav-sub>li.sub>.nav-sub {
+    padding: 10px 10px 10px 40px;
+  }
+
+  .book-page .L-menu .nav-sub>li.sub>.nav-sub:before {
+    display: none;
+  }
+
+  .book-page .btn-Lmenu {
+    display: none;
+    position: relative;
+    color: #ffffff;
+    font-size: 20px;
+    z-index: 9;
+    background: #689a39;
+    padding: 15px 10px;
+  }
+
+  .book-page .btn-Lmenu:before {
+    content: "\f067";
+    font-family: 'FontAwesome';
+    font-size: 21px;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    transition: All 200ms ease;
+  }
+
+  .book-page .btn-Lmenu.active:before {
+    content: "\f068";
+  }
+
+  .book-page .btn-Lmenu:hover {
+    background: #9d6d01;
+  }
+
+  .book-page .R-col {
+    float: left;
+    width: 885px;
+    padding: 25px;
+  }
+
+  .book-page .R-col .title {
+    color: #333333;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .book-page .R-col .subtitle {
+    color: #333333;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1;
+    margin-bottom: 25px;
+  }
+
+  .book-page .R-col .editor-content p {
+    text-indent: 30px;
+  }
+
+  .book-page .R-col .editor-content img {
+    margin: 20px 0;
+  }
+
+  .book-page .R-col .video {
+    margin-top: 25px;
+  }
+
+  .book-page .R-col .gallery {
+    padding-top: 30px;
+  }
+
+  .book-page .R-col .gallery .title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #9d6d01;
+    margin-bottom: 15px;
+  }
+
+  .book-page .R-col .gallery .owl-carousel {
+    padding: 0 30px;
+  }
+
+  .book-page .R-col .download {
+    padding-top: 30px;
+  }
+
+  .book-page .R-col .download .title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #9d6d01;
+    margin-bottom: 15px;
+  }
+
+  .book-page .R-col .download .owl-carousel {
+    padding: 0
+  }
+
+  .book-page .R-col .download .owl-item {
+    position: relative;
+  }
+
+  .book-page .R-col .download .active.owl-item+.active.owl-item:before {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0px;
+    margin: auto;
+    width: 2px;
+    height: 67px;
+    background-color: #b28604;
+
+  }
+
+  .book-page .R-col .download .item {
+    padding: 0 30px;
+  }
+
+  .book-page .R-col .download .item .title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #689a39;
+    margin-bottom: 10px;
+  }
+
+  .book-page .R-col .download .item .desc {
+    font-size: 18px;
+    font-weight: normal;
+    color: #689a39;
+    margin-bottom: 3px;
+  }
+
+  .book-page .R-col .download .item .desc small {
+    font-size: 18px;
+    font-weight: normal;
+    color: #333333;
+  }
+
+  .book-page .R-col .download .item .svg-inline--fa {
+    font-size: 14px;
+  }
+
+  .book-page .R-col .download .row-table .col:nth-child(2) {
+    text-align: right;
+  }
+
+  .book-page .R-col .stat-box {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    color: #333333;
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  .book-page .R-col .stat-box .text-primary {
+    font-weight: 500;
+  }
+
+  .book-page .R-col .stat-box strong {
+    margin-right: 15px;
+    font-size: 24px;
+    font-weight: normal;
+    color: #689a39;
+  }
+
+  .book-page .R-col .stat-box strong img {
+    position: relative;
+    top: -1px;
+  }
+
+  .book-page .R-col .stat-box .row-table .col:nth-child(2) {
+    text-align: right;
+  }
+
+  .book-page .R-col .note-box {
+    font-size: 20px;
+    color: #333333;
+    padding-top: 30px;
+  }
+
+  .book-page .R-col .note-box strong {
+    font-weight: 500;
+    color: #9d6d01;
+  }
+
+  .book-page .R-col .cursor-box {
+    margin-top: 30px;
+    position: relative;
+  }
+
+  .book-page .R-col .cursor-box:before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    height: 1px;
+    background-color: #dededd;
+  }
+
+  .book-page .R-col .cursor-box:after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+
+  .book-page .R-col .cursor-box .btn {
+    float: left;
+    min-width: 65px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .book-page .R-col .cursor-box .btn+.btn {
+    float: right;
+  }
+
+  .book-page .R-col .pagination-block {
+    margin-top: 30px;
+  }
+
+
+
+  .advance-search {
+    display: block;
+    padding-top: 19px;
+  }
+
+  .advance-search .advance {
+    font-size: 16px;
+    color: #689a39;
+    text-align: right;
+    padding-right: 15px;
+    border-right: 1px solid #f0f0f0;
+    margin-right: 20px;
+    margin-top: 36px;
+    display: block;
+    line-height: 12px;
+  }
+
+  .advance-search .advance .icon {
+    padding-left: 7px;
+  }
+
+  .advance-search .advance .icon:before {
+    content: "\f107";
+    font: normal normal normal 24px/1 FontAwesome;
+  }
+
+  .advance-search .advance.active .icon:before {
+    content: "\f106";
+  }
+
+  .advance-search .search {
+    width: 495px;
+    transition: all 200ms ease-out;
+  }
+
+  .advance-search .search .input-group {
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    box-shadow: 0px 5px 25px 1px rgba(0, 0, 0, 0.06);
+  }
+
+  .advance-search .search .form-control {
+    border: 0;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 18px;
+    color: #999999;
+    box-shadow: none;
+  }
+
+  .advance-search .search .select2-container--default .select2-selection--single {
+    border-radius: 8px;
+    height: 40px;
+  }
+
+  .advance-search .search .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 40px;
+    font-size: 18px;
+  }
+
+  .advance-search .search .input-group-btn {
+    font-size: 18px;
+    padding-right: 7px;
+  }
+
+  .advance-search .search .btn-search {
+    border: 0;
+    background-color: transparent;
+    color: #cccccc;
+    transition: all 200ms ease-out;
+  }
+
+  .advance-search .search .btn-search:hover {
+    color: #999;
+  }
+
+  .advance-search .search .radio-list {
+    padding-top: 12px;
+  }
+
+  .advance-search .search .radio-list>li {
+    display: block;
+    float: none;
+  }
+
+  .advance-search .search .radio-control .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+
+  .advance-search .search .radio-control .icon:before {
+    width: 16px;
+    height: 16px;
+    border: 5px solid #fff;
+  }
+
+  .advance-search .search .radio-control .txt {
+    font-size: 17px;
+    color: #333333;
+    line-height: 23px;
+  }
+
+  .advance-search .search .form-default .form-group {
+    margin-bottom: 15px;
+  }
+
+  .advance-search .search .row {
+    margin: 0 -9px;
+  }
+
+  .advance-search .search .row>div {
+    padding: 0 9px;
+  }
+
+  .advance-search .search .row>.col {
+    padding: 0 9px;
+    width: 0;
+    float: right;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    transition-delay: 400ms;
+    transition: all 200ms ease-out;
+  }
+
+  .advance-search .search .row>.col:nth-child(1) {
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+  }
+
+  .advance-search .search .sub {
+    transition: all 200ms ease-out;
+    transition-delay: 100ms;
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .advance-search .search.open {
+    width: 740px;
+    padding-bottom: 90px;
+  }
+
+  .advance-search .search.open .row>.col {
+    width: 66.66%;
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+  }
+
+  .advance-search .search.open .row>.col:nth-child(2) {
+    width: 33.33%;
+  }
+
+  .advance-search .search.open .sub {
+    opacity: 1;
+    height: auto;
+    pointer-events: visible;
+  }
+
+
+
+
+
+  .result-title {
+    font-size: 18px;
+    color: #9d6d01;
+    padding-bottom: 5px;
+  }
+
+  .result-box {
+    padding-bottom: 30px;
+  }
+
+  .result-box li {
+    padding-top: 30px;
+  }
+
+  .result-box .title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #9d6d01;
+    margin-bottom: 5px;
+  }
+
+  .result-box .desc {
+    font-size: 24px;
+    color: #333333;
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+
+  .result-box .desc .hilight {
+    color: #689a39;
+  }
+
+  .result-box .url {
+    font-size: 20px;
+    color: #689a39;
+  }
+
+
+
+
+  .profile-page {
+    height: calc(100vh - 105px - 105px);
+    padding: 55px 0;
+    position: relative;
+    overflow: hidden;
+    background-image: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/background/bg_profile.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
+  }
+
+  .profile-header {}
+
+  .profile-header .thumb {
+    width: 154px;
+    height: 154px;
+    border: 8px solid #ebebeb;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 42px;
+  }
+
+  .profile-header .name {
+    color: #333333;
+    font-size: 35px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .profile-header .stat {
+    color: #9d6d01;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .profile-header .stat small {
+    font-weight: normal;
+    color: #666666;
+  }
+
+  .profile-header .btn-box {
+    width: 200px;
+    float: right;
+  }
+
+  .profile-header .btn-box .btn {
+    display: block;
+    min-width: 200px;
+  }
+
+  .profile-header .btn-box .btn+.btn {
+    margin-top: 20px;
+  }
+
+  .profile-header .upload-box {
+    padding-bottom: 25px;
+  }
+
+  .profile-header .upload-box .btn {}
+
+  .profile-header .upload-box .namefile {
+    font-size: 20px;
+    font-weight: 500;
+    color: #689a39;
+    margin-left: 20px;
+  }
+
+  .profile-header .suggestion {
+    color: #9d6d01;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .profile-header .suggestion small {
+    font-size: 20px;
+    display: block;
+  }
+
+  .profile-body {
+    color: #333333;
+    font-size: 24px;
+    padding-top: 50px;
+  }
+
+  .profile-body strong {
+    color: #9d6d01;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .profile-body .row-table+.row-table {
+    margin-top: 20px;
+  }
+
+  .profile-body .row-table>.col:first-child {
+    width: 180px;
+    padding-right: 25px;
+  }
+
+  .profile-body .form-default .form-group {
+    margin-bottom: 25px;
+  }
+
+  .profile-body .radio-list li+li {
+    margin-left: 40px;
+  }
+
+  .profile-footer .btn-box {
+    padding-top: 30px;
+  }
+
+  .profile-footer .btn-box .btn+.btn {
+    margin-left: 20px;
+  }
+
+  .editprofile-page {
+    padding: 55px 0;
+    position: relative;
+    overflow: hidden;
+    background-image: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/background/bg_editprofile.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
+  }
+
+  .editprofile-page .profile-header {
+    border: 1px solid #f5f5f5;
+    border-radius: 15px;
+    padding: 20px;
+  }
+
+  .editpass-page {
+    height: calc(100vh - 105px - 105px);
+    padding: 55px 0;
+    position: relative;
+    overflow: hidden;
+    background-image: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/background/bg_editpass.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
+  }
+
+
+
+  .email-submit-page {
+    height: calc(100vh - 105px - 105px);
+    padding: 55px 0;
+    position: relative;
+    overflow: hidden;
+    background-image: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/background/bg_email_submit.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .email-submit-page .submit-box {
+    width: 866px;
+    height: 621px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 150px 100px 90px 100px;
+    text-align: center;
+    background-image: url(http://wewebplaza.com/thaiherbal/front/template/default/public/image/background/bg_login_paper.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .email-submit-page .submit-box .title {
+    color: #006738;
+    font-size: 48px;
+    font-weight: bold;
+  }
+
+  .email-submit-page .submit-box .subtitle {
+    color: #006738;
+    font-size: 48px;
+    font-weight: 100;
+    margin-bottom: 40px;
+  }
+
+  .email-submit-page .submit-box .title.red {
+    color: #df0000;
+  }
+
+  .email-submit-page .submit-box .subtitle.red {
+    color: #df0000;
+  }
+
+  .email-submit-page .submit-box .desc {
+    color: #64903a;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .email-submit-page .submit-box .subdesc {
+    color: #64903a;
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .email-submit-page .submit-box .btn-box {
+    margin-top: 40px;
+  }
+
+
+
+
+  .btn-secondary {
+    color: #fff;
+    background: rgba(212, 182, 39, 1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(212, 182, 39, 1) 0%, rgba(188, 149, 15, 1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(212, 182, 39, 1)), color-stop(100%, rgba(188, 149, 15, 1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(212, 182, 39, 1) 0%, rgba(188, 149, 15, 1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(212, 182, 39, 1) 0%, rgba(188, 149, 15, 1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(212, 182, 39, 1) 0%, rgba(188, 149, 15, 1) 100%);
+    background: radial-gradient(ellipse at center, rgba(212, 182, 39, 1) 0%, rgba(188, 149, 15, 1) 100%);
+  }
+
+  .btn-secondary:focus,
+  .btn-secondary:hover {
+    background: radial-gradient(ellipse at center, rgba(212, 182, 39, 1) 0%, #7b6519 100%);
+  }
+
+  .btn {
+    padding: 5px 20px;
+    text-shadow: none;
+    font-size: 24px;
+    line-height: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    vertical-align: middle;
+    font-weight: normal;
+    min-width: 125px;
+    border-width: 0px;
+    border-style: solid;
+    border-color: transparent;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    -webkit-transition: all 200ms ease-out;
+    -moz-transition: all 200ms ease-out;
+    -ms-transition: all 200ms ease-out;
+    -o-transition: all 200ms ease-out;
+    transition: all 200ms ease-out;
+    -webkit-box-shadow: 7px 7px 20px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 7px 7px 20px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 7px 7px 20px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-dark {
+    color: #fff;
+    background: rgba(148,148,148,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(148,148,148,1) 0%, rgba(102,102,102,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(148,148,148,1)), color-stop(100%, rgba(102,102,102,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(148,148,148,1) 0%, rgba(102,102,102,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(148,148,148,1) 0%, rgba(102,102,102,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(148,148,148,1) 0%, rgba(102,102,102,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(148,148,148,1) 0%, rgba(102,102,102,1) 100%); 
+  }
+
+
+  .btn-dark:hover,
+  .btn-dark:focus {
+    color: #fff;
+    background: radial-gradient(ellipse at center, rgba(148,148,148,1) 0%, #2f2b2b 100%);
+  }
+
+
+  .btn-primary {
+    color: #fff;
+    background: rgba(124, 203, 50, 1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(124, 203, 50, 1) 0%, rgba(106, 159, 56, 1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(124, 203, 50, 1)), color-stop(100%, rgba(106, 159, 56, 1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(124, 203, 50, 1) 0%, rgba(106, 159, 56, 1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(124, 203, 50, 1) 0%, rgba(106, 159, 56, 1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(124, 203, 50, 1) 0%, rgba(106, 159, 56, 1) 100%);
+    background: radial-gradient(ellipse at center, rgba(124, 203, 50, 1) 0%, rgba(106, 159, 56, 1) 100%);
+  }
+
+
+  .btn-primary:hover,
+  .btn-primary:focus {
+    color: #fff;
+    background: radial-gradient(ellipse at center, rgba(124, 203, 50, 1) 0%, #3e5f1f 100%);
+  }
+
+  .btn p {
+    font-size: 14px;
+    margin-bottom: 0;
+    line-height: 10px;
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+
+  .form-control:focus,
+  .form-control:hover {
+    border-color: #9d6d01;
+  }
+
+  .col-md-12{
+    width: 100%;
+  }
+
+
+
+  .checkbox-control {
+    position: relative;
+    display: inline-block;
+}
+
+
+
+
+
+[role=button], a, area, button, input:not([type=range]), label, select, summary, textarea {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+.checkbox-control .icon {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #fff;
+  background-color: transparent;
+  position: relative;
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 0px 5px 0px #989898;
+  -moz-box-shadow: 0px 0px 5px 0px #989898;
+  box-shadow: 0px 0px 5px 0px #989898;
+}
+
+.checkbox-control input[type='checkbox'] {
+  position: absolute;
+  z-index: 5;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  margin: 0;
+}
+input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+input[type=checkbox], input[type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+
+.form-default .control-label .red {
+  color: #FF0000;
+}
+
+
+
+
 
 }

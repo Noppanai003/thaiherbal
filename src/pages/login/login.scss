@@ -1386,6 +1386,9 @@ page-login {
     text-transform: uppercase;
   }
 
+  .form-control:focus,.form-control:hover {
+      border-color: #9d6d01;
+  }
   
 
 
