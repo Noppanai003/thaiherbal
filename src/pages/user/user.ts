@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { UserProvider } from '../../providers/user/user';
 import * as $ from "jquery";
-import { FileTransferObject, FileUploadOptions } from '@ionic-native/file-transfer';
 
 /**
  * Generated class for the UserPage page.
@@ -21,6 +20,7 @@ import { FileTransferObject, FileUploadOptions } from '@ionic-native/file-transf
 export class UserPage {
   dataHome: any;
   dataProfile: any;
+  loadPage = false
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -38,6 +38,7 @@ export class UserPage {
   async ionViewDidEnter() {
     await this.checkToken()
     await this.loadProfile()
+    this.loadPage = true
   }
 
   checkToken() {
@@ -68,7 +69,7 @@ export class UserPage {
     formData.append('access_token', localStorage.access_token);
     await this.userProvider.uploadPhoto(formData).subscribe(async (data:any)=>{
       if(!data.status){
-        alert('Failed.')
+        alert(data.message)
       }else{
         await this.loadProfile()
       }
