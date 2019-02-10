@@ -32,4 +32,12 @@ export class UserProvider {
     return this.http.post(this.URL_PROFILE,JSON.stringify(data), { headers: headers })
   }
 
+  uploadPhoto(data) {
+    // let headers = new HttpHeaders();
+    // headers.append('Content-Type', 'application/json');
+    // headers.append('Access-Control-Allow-Origin', '*');
+    // headers.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT');
+    return this.http.post("http://wewebplaza.com/thaiherbal/api/upload?type=add&key=mem",data)
+  }
+
 }

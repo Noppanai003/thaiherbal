@@ -1,29 +1,48 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title align="center">
-        <img src="{{ dataHome?.logo }}" style="width: 10%;vertical-align: middle;">
-        <span style="color: white;vertical-align: middle;font-size: 30px;">Thai Herbal</span>
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
-  
+  <ion-navbar>
+    <ion-title align="center">
+      <img src="{{ dataHome?.logo }}" style="width: 33px;vertical-align: middle;">
+      <span style="color: white;vertical-align: middle;font-size: 30px;">Thai Herbal</span>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
 
 <ion-content>
   <ion-list>
 
-    <ion-item>
-      <ion-avatar item-start large>
-        <img src="{{dataHome?.base_url}}/upload/mem/pictures/{{dataProfile?.md_mem_pic}}" style="width: 80px;height: 80px;">
+    <ion-item text-wrap>
+      <input id="files" name="uploadProfile" style="visibility:hidden;" type="file"  (change)="upload($event)">
+      <ion-avatar item-start large (click)="clickuploadProfile();">
+        <img src="{{dataHome?.base_url}}/upload/mem/pictures/{{dataProfile?.md_mem_pic}}"
+          style="width: 70px;height: 70px;">
+        <ion-icon class="fa fa-camera" aria-hidden="true" style="background: white;position: absolute;bottom: 73px;left: 40px;padding: 4px;color: #626262;border-radius: 15px;">
+        </ion-icon>
       </ion-avatar>
+
       <h1>{{dataProfile?.md_mem_name}} {{dataProfile?.md_mem_lname}}</h1>
-      <p>{{dataProfile?.md_mem_email}}</p>
+      <p style="font-size: 20px;color: #404040d1;"><i class="fa fa-envelope-o" aria-hidden="true"
+          style="margin-right: 10px;"></i>
+        {{dataProfile?.md_mem_email}}</p>
+      <p style="font-size: 20px;color: #404040d1;"><i class="fa fa-mobile" aria-hidden="true"
+          style="margin-right: 17px;padding-left: 5px;"></i>
+        {{dataProfile?.md_mem_tel}}</p>
+      <p style="font-size: 20px;color: #404040d1;"><i class="fa fa-venus-mars" aria-hidden="true"
+          style="margin-right: 10px;"></i>
+        {{dataProfile?.md_mem_gender == '1' ? 'ชาย':(dataProfile?.md_mem_gender == '2' ? 'หญิง':'none')}}</p>
+      <p style="font-size: 20px;color: #404040d1;"><i class="fa fa-graduation-cap" aria-hidden="true"
+          style="margin-right: 10px;"></i>
+        {{dataProfile?.md_mem_edu}}</p>
+      <p style="font-size: 20px;color: #404040d1;"><i class="fa fa-briefcase" aria-hidden="true"
+          style="margin-right: 10px;"></i>
+        {{dataProfile?.md_mem_career}}</p>
+      <p style="font-size: 20px;color: #404040d1;display: table-cell;"><i class="fa fa-address-book" aria-hidden="true"
+          style="margin-right: 12px;"></i>
+      </p>
+      <p style="font-size: 20px;color: #404040d1;display: table-cell;">
+      {{dataProfile?.md_mem_address}}
+    </p>
     </ion-item>
-
-    <!-- <ion-item>
-      <ion-icon name="ios-cash-outline" item-start></ion-icon>
-      ยอดเงินคงเหลือ <span item-end><b style="font-size:20px;">1,000.00</b> <b style="color:orange;">฿</b></span>
-    </ion-item> -->
-
 
   </ion-list>
 

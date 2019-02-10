@@ -18,8 +18,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HomeProvider } from '../providers/home/home';
-import { AboutProvider } from '../providers/about/about';
+// import { AboutProvider } from '../providers/about/about';
 import { UserProvider } from '../providers/user/user';
+
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -55,7 +58,7 @@ import { UserProvider } from '../providers/user/user';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HomeProvider,
-    UserProvider
+    UserProvider, 
   ]
 })
 export class AppModule {}

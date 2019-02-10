@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { UserProvider } from '../../providers/user/user';
 import { UserPage } from '../user/user';
 import { RegisterPage } from '../register/register';
+import * as $ from "jquery";
 
 /**
  * Generated class for the LoginPage page.
@@ -19,26 +20,29 @@ import { RegisterPage } from '../register/register';
 export class LoginPage {
   dataHome: any
   // @ViewChild('member_login_email') member_login_email;
-  // @ViewChild('password') password;
+  // @ViewChild('member_login_password') member_login_password;
   formLogin = {
-    member_login_email: 'd055222148@gmail.com',
-    member_login_password: 'Q6ny2ojn',
+    member_login_email: '',
+    member_login_password: '',
   }
+  isButton: boolean;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public userProvider: UserProvider,
     public modalController: ModalController,
   ) {
+    this.isButton = false;
   }
 
-  ionViewDidLoad() {
+  async ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
     this.checkToken()
     this.dataHome = JSON.parse(localStorage.home);
-
-    // setTimeout(() => {
-    // }, 1000);
+    let _this = this;
+    $( "input" ).change(function() {
+      _this.eventInput();
+    });
   }
 
   checkToken() {
@@ -47,13 +51,26 @@ export class LoginPage {
     }
   }
 
+  async eventInput(){
+    this.isButton = await ($('#member_login_email').val() != "" && $('#member_login_password').val() != "") ? true:false;
+    $('#member_login_email').focus()
+    // console.log(this.isButton)
+  }
+
   async login() {
-    let regExr = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
-    let result = regExr.test(this.formLogin.member_login_password);
-    if (!result) {
-      alert('โปรดกรอกรูปแบบข้อมูลให้ถูกต้อง')
+    if($('#member_login_email').val() == ""){
+      $('#member_login_email').focus();
+      return false;
+    }else if($('#member_login_password').val() == ""){
+      $('#member_login_password').focus();
       return false;
     }
+    // let regExr = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+    // let result = regExr.test(this.formLogin.member_login_password);
+    // if (!result) {
+    //   alert('โปรดกรอกรูปแบบข้อมูลให้ถูกต้อง')
+    //   return false;
+    // }
 
 
     // this.password.setFocus();
