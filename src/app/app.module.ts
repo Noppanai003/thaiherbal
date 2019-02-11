@@ -12,14 +12,16 @@ import { EbookPage } from '../pages/ebook/ebook';
 import { UserPage } from '../pages/user/user';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { PolicyPage } from '../pages/policy/policy';
+import { ForgotpassPage } from '../pages/forgotpass/forgotpass';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HomeProvider } from '../providers/home/home';
-// import { AboutProvider } from '../providers/about/about';
 import { UserProvider } from '../providers/user/user';
+import { EbookProvider } from '../providers/ebook/ebook';
 
 
 
@@ -34,6 +36,8 @@ import { UserProvider } from '../providers/user/user';
     TabsPage,
     LoginPage,
     RegisterPage,
+    PolicyPage,
+    ForgotpassPage,
   ],
   imports: [
     BrowserModule,
@@ -52,13 +56,16 @@ import { UserProvider } from '../providers/user/user';
     TabsPage,
     LoginPage,
     RegisterPage,
+    PolicyPage,
+    ForgotpassPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HomeProvider,
-    UserProvider, 
+    UserProvider,
+    EbookProvider, 
   ]
 })
 export class AppModule {}

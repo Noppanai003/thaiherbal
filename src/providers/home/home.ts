@@ -17,10 +17,6 @@ export class HomeProvider {
 
 
   loadHome() {
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT');
     return this.http.get(this.URL_HOME)
   }
 

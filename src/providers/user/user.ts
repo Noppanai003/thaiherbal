@@ -11,7 +11,10 @@ import { Injectable } from '@angular/core';
 export class UserProvider {
 
   URL_LOGIN = 'http://wewebplaza.com/thaiherbal/api/login';
+  URL_FORGOT = 'http://wewebplaza.com/thaiherbal/api/forgot';
   URL_PROFILE = 'http://wewebplaza.com/thaiherbal/api/profile';
+  URL_REGISTER = 'http://wewebplaza.com/thaiherbal/api/register';
+  URL_UPLOAD_PROFILE = 'http://wewebplaza.com/thaiherbal/api/upload?type=add&key=mem';
   constructor(public http: HttpClient) {
     console.log('Hello UserProvider Provider');
   }
@@ -22,6 +25,22 @@ export class UserProvider {
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT');
     return this.http.post(this.URL_LOGIN,JSON.stringify(data), { headers: headers })
+  }
+
+  register(data){
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT');
+    return this.http.post(this.URL_REGISTER,JSON.stringify(data), { headers: headers })
+  }
+
+  forgot(data){
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT');
+    return this.http.post(this.URL_FORGOT,JSON.stringify(data), { headers: headers })
   }
 
   loadProfile(data) {
@@ -37,7 +56,15 @@ export class UserProvider {
     // headers.append('Content-Type', 'application/json');
     // headers.append('Access-Control-Allow-Origin', '*');
     // headers.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT');
-    return this.http.post("http://wewebplaza.com/thaiherbal/api/upload?type=add&key=mem",data)
+    return this.http.post(this.URL_UPLOAD_PROFILE,data)
+  }
+
+  loadPolicy() {
+    return this.http.get(this.URL_REGISTER)
+  }
+
+  loadRegister() {
+    return this.http.get(this.URL_REGISTER)
   }
 
 }

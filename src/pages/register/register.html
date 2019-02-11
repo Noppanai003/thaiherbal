@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar>
     <ion-title align="center">
-      <img src="{{ dataHome?.logo }}" style="width: 10%;vertical-align: middle;">
-      <span style="color: white;vertical-align: middle;font-size: 30px;">Thai Herbal</span>
+      <img src="{{ dataHome?.logo }}" class="title-logo">
+      <span class="title-header">Thai Herbal</span>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -10,7 +10,7 @@
 
 <ion-content padding>
   <div class="register-page">
-    <form data-toggle="validator" role="form" id="formregister" class="form-default" novalidate="true">
+    <form method="POST" role="form" class="form-default" novalidate="true">
       <div class="container">
         <div align="center" style="color: #ae840d; font-weight: 100; line-height: 28px !important;">
           <h2 style="color: #ae840d; font-size: 40px; font-weight: bold !important;">สมัครสมาชิก</h2>
@@ -24,8 +24,8 @@
               <div class="form-group has-feedback">
                 <label class="control-label">ชื่อหน่วยงาน / Institution <span class="red">*</span></label>
                 <div class="block-control">
-                  <input class="form-control" type="text" id="inputOrganize" name="inputOrganize" value="" placeholder=""
-                    data-error="" required="">
+                  <input  type="text" [(ngModel)]="formregister.inputOrganize" class="form-control" id="inputOrganize" name="inputOrganize" placeholder=""
+                  required="">
                   <span class="form-control-feedback" aria-hidden="true"></span>
                 </div>
               </div>
@@ -33,12 +33,10 @@
             <div class="col-md-12">
               <div class="form-group has-feedback has-success">
                 <label class="control-label">เพศ / Gender <span class="red">*</span></label>
-                <select class="form-control select2-hidden-accessible" size="1" style="width: 100%;" id="inputEducation"
-                  name="inputEducation" tabindex="-1" aria-hidden="true">
+                <select  class="form-control select2-hidden-accessible" [(ngModel)]="formregister.inputGender" id="inputGender" name="inputGender" size="1" style="width: 100%;" tabindex="-1" aria-hidden="true">
                   <option value="" selected="">กรุณาเลือกเพศ</option>
-                  <option value="5">ชาย</option>
-                  <option value="7">หญิง</option>
-
+                  <option value="1">ชาย</option>
+                  <option value="2">หญิง</option>
                 </select>
               </div>
             </div>
@@ -46,18 +44,16 @@
               <div class="form-group has-feedback">
                 <label class="control-label">ชื่อ / Name <span class="red">*</span></label>
                 <div class="block-control">
-                  <input class="form-control" type="text" id="inputName" name="inputName" value="" placeholder=""
-                    data-error="" required="">
+                  <input class="form-control" type="text" [(ngModel)]="formregister.inputName" id="inputName" name="inputName" placeholder="" required="">
                   <span class="form-control-feedback" aria-hidden="true"></span>
                 </div>
               </div>
             </div>
             <div class="col-md-12">
               <div class="form-group has-feedback">
-                <label class="control-label">นามสกุล / Surname <span class="red">*</span></label>
                 <div class="block-control">
-                  <input class="form-control" type="text" id="inputlname" name="inputlname" value="" placeholder=""
-                    data-error="" required="">
+                <label class="control-label">นามสกุล / Surname <span class="red">*</span></label>
+                <input class="form-control" type="text" [(ngModel)]="formregister.inputlname" id="inputlname" name="inputlname" placeholder="" required="">
                   <span class="form-control-feedback" aria-hidden="true"></span>
                 </div>
               </div>
@@ -66,15 +62,9 @@
               <div class="form-group has-feedback">
                 <div class="select-box">
                   <div class="control-label">การศึกษา / Education <span class="red">*</span></div>
-                  <select class="form-control select2-hidden-accessible" size="1" style="width: 100%;" id="inputEducation"
-                    name="inputEducation" tabindex="-1" aria-hidden="true">
+                  <select  class="form-control select2-hidden-accessible" [(ngModel)]="formregister.inputEducation" id="inputEducation" name="inputEducation" size="1" style="width: 100%;" tabindex="-1" aria-hidden="true">
                     <option value="" selected="">กรุณาเลือกการศึกษา</option>
-                    <option value="5">ประถมศึกษา</option>
-                    <option value="7">มัธยมศึกษาตอนปลาย/อาชีวศึกษา</option>
-                    <option value="8">ปวส.</option>
-                    <option value="9">ปริญญาตรี</option>
-                    <option value="10">ปริญญาโท</option>
-                    <option value="11">ปริญญาเอก</option>
+                    <option *ngFor="let listedu of loadEDU" value="{{ listedu.md_ban_id }}">{{ listedu.md_ban_subject }}</option>
 
                   </select>
                 </div>
@@ -85,14 +75,9 @@
               <div class="form-group has-feedback">
                 <div class="select-box">
                   <div class="control-label">อาชีพ / Career <span class="red">*</span></div>
-                  <select class="form-control select2-hidden-accessible" size="1" style="width: 100%;" id="inputCareer"
-                    name="inputCareer" tabindex="-1" aria-hidden="true">
+                  <select  class="form-control select2-hidden-accessible" [(ngModel)]="formregister.inputCareer" id="inputCareer" name="inputCareer" size="1" style="width: 100%;"  tabindex="-1" aria-hidden="true">
                     <option value="" selected="">กรุณาเลือกอาชีพ</option>
-                    <option value="12">ข้าราชการ</option>
-                    <option value="13">พนักงานบริษัทเอกชน</option>
-                    <option value="14">ธุรกิจส่วนตัว</option>
-                    <option value="15">นักเรียน/นักศึกษา</option>
-                    <option value="16">อื่นๆ</option>
+                    <option *ngFor="let listjob of loadJOB" value="{{ listjob.md_ban_id }}">{{ listjob.md_ban_subject }}</option>
 
                   </select>
                 </div>
@@ -103,8 +88,7 @@
               <div class="form-group has-feedback has-error has-danger">
                 <label class="control-label">ที่อยู่ / Address</label>
                 <div class="block-control">
-                  <textarea class="form-control" rows="2" id="inputAddress" name="inputAddress" placeholder=""
-                    data-error=""></textarea>
+                  <textarea class="form-control" rows="2" [(ngModel)]="formregister.inputAddress" id="inputAddress" name="inputAddress" placeholder=""></textarea>
                 </div>
               </div>
             </div>
@@ -112,8 +96,7 @@
               <div class="form-group has-feedback">
                 <label class="control-label">โทรศัพท์ / Telephone <span class="red">*</span></label>
                 <div class="block-control">
-                  <input class="form-control" type="text" id="inputTel" name="inputTel" value="" placeholder="" pattern="^(?:0|\(?\+66\)?\s?|0066\s?)[1-9](?:[\.\-\s]?\d){7,8}$"
-                    data-error="กรุณาระบุเฉพาะตัวเลข 9 หรือ 10 หลัก เช่น 02 580 5733" required="">
+                  <input class="form-control" type="text" [(ngModel)]="formregister.inputTel" id="inputTel" name="inputTel" placeholder="" required="">
                   <span class="form-control-feedback" aria-hidden="true"></span>
                 </div>
               </div>
@@ -122,8 +105,7 @@
               <div class="form-group has-feedback">
                 <label class="control-label">อีเมล / E-mail <span class="red">*</span></label>
                 <div class="block-control">
-                  <input class="form-control" type="email" id="inputEmail" name="inputEmail" value="" placeholder=""
-                    data-error="" required="">
+                  <input class="form-control" type="email" [(ngModel)]="formregister.inputEmail" id="inputEmail" name="inputEmail" placeholder="" required="">
                   <span class="form-control-feedback" aria-hidden="true"></span>
                 </div>
               </div>
@@ -132,9 +114,7 @@
               <div class="form-group has-feedback">
                 <label class="control-label">รหัสผ่าน / Password <span class="red">*</span></label>
                 <div class="block-control">
-                  <input class="form-control" type="password" id="inputPassword" name="inputPassword" data-minlength="8"
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="" data-error="ระบุเป็นตัวเลข และอักษรตัวเล็กตัวใหญ่ความยาวอย่างน้อย 8 ตัว"
-                    required="">
+                  <input class="form-control" type="password" [(ngModel)]="formregister.inputPassword" id="inputPassword" name="inputPassword" placeholder="" required="">
                   <span class="form-control-feedback" aria-hidden="true"></span>
                 </div>
               </div>
@@ -143,9 +123,7 @@
               <div class="form-group has-feedback">
                 <label class="control-label">ยืนยันรหัสผ่าน / Password Comfirmation <span class="red">*</span></label>
                 <div class="block-control">
-                  <input class="form-control" type="password" id="inputRepassword" name="inputRepassword"
-                    data-minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="" data-error=""
-                    data-match="#inputPassword" data-match-error="โปรดป้อนรหัสผ่านที่ตรงกัน" required="">
+                  <input class="form-control" type="password" [(ngModel)]="formregister.inputRepassword" id="inputRepassword" name="inputRepassword" placeholder="" required="">
                   <span class="form-control-feedback" aria-hidden="true"></span>
                 </div>
               </div>
@@ -155,18 +133,18 @@
             <ion-grid>
               <ion-row>
                 <ion-col col-1>
-                  <ion-checkbox name="checkterm"></ion-checkbox>
+                    <ion-checkbox type="checkbox" [(ngModel)]="formregister.checkterm" id="checkterm" name="checkterm"></ion-checkbox>
                 </ion-col>
                 <ion-col col-11>
                   <div class="content" style="margin-left: -15px;">
                     <span class="red" style="margin-left: -15px;">*</span>
                     ฉันยอมรับ
-                    <a class="link" href="javascript:void(0)" data-toggle="modal" data-target="#modalTermsTH">ข้อกำหนดและเงื่อนไข
-                      และ นโยบายความเป็นส่วนตัว</a>
+                    <span class="link" (click)="policy('th');">ข้อกำหนดและเงื่อนไข
+                      และ นโยบายความเป็นส่วนตัว</span>
                     ของตำรามาตรฐานยาสมุนไพรไทย / I agree with
-                    <a class="link" href="javascript:void(0)" data-toggle="modal" data-target="#modalTermsEN">Terms
+                    <span class="link" (click)="policy('en');">Terms
                       &amp;
-                      Conditions and Privacy Policy</a>
+                      Conditions and Privacy Policy</span>
                     of Thai Herbal Pharmacopoeia
                   </div>
                 </ion-col>

@@ -1,10 +1,14 @@
 <ion-header>
   <ion-navbar>
+    <i *ngIf="active == 'subcategory'" class="fa fa-chevron-left goBack" (click)="loadCategory();"></i>
+    <i *ngIf="active == 'listcontent'" class="fa fa-chevron-left goBack" (click)="loadSubCategory(data.cid,data.cname);"></i>
+    <i class="fa fa-search iconRight" aria-hidden="true"></i>
     <ion-title align="center">
-      <img src="{{ dataHome?.logo }}" style="width: 10%;vertical-align: middle;">
-      <span style="color: white;vertical-align: middle;font-size: 30px;">Thai Herbal</span>
+      <img src="{{ dataHome?.logo }}" class="title-logo">
+      <span class="title-header">Thai Herbal</span>
     </ion-title>
   </ion-navbar>
+
 </ion-header>
 
 
@@ -12,23 +16,28 @@
 <ion-content>
 
   <ion-item-group>
-    <ion-item-divider color="light">หมวดหมู่</ion-item-divider>
+    <ion-item-divider color="light">
+      <h3>{{ headContent }}</h3>
+    </ion-item-divider>
 
-    <button ion-item>
-      แก้ไขข้อมูลส่วนตัว
-    </button>
+    <div *ngIf="active == 'category'">
+      <button ion-item *ngFor="let item of listContent" (click)="(item.count == null ? viewContent(item.md_dwg_id,'',''):loadSubCategory(item.md_dwg_id,item.md_dwg_subject))">
+        {{item.md_dwg_subject}}
+      </button>
+    </div>
 
-    <button ion-item>
-      แก้ไขข้อมูลส่วนตัว
-    </button>
+    <div *ngIf="active == 'subcategory'">
+      <button ion-item *ngFor="let item of listContent" (click)="loadListContent(data.cid,item.md_dws_id,data.cname,item.md_dws_subject);">
+        {{item.md_dws_subject}}
+      </button>
+    </div>
 
-    <button ion-item>
-      แก้ไขข้อมูลส่วนตัว
-    </button>
+    <div *ngIf="active == 'listcontent'">
+      <button ion-item *ngFor="let item of listContent" (click)="viewContent(data.cid,data.gid,item.md_cms_id);">
+        {{item.md_cms_subject}}
+      </button>
+    </div>
 
-    <button ion-item>
-      เปลี่ยนรหัสผ่าน
-    </button>
 
   </ion-item-group>
 </ion-content>

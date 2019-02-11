@@ -3,7 +3,9 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { UserProvider } from '../../providers/user/user';
 import { UserPage } from '../user/user';
 import { RegisterPage } from '../register/register';
+import { ForgotpassPage } from '../forgotpass/forgotpass';
 import * as $ from "jquery";
+
 
 /**
  * Generated class for the LoginPage page.
@@ -88,8 +90,11 @@ export class LoginPage {
 
 
   }
-  forgetpassword() {
-
+  
+  async forgetpassword() {
+    // this.navCtrl.push(ForgotpassPage);
+    const modal = await this.modalController.create(ForgotpassPage);
+    return await modal.present();
   }
 
   async register() {

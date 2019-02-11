@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <i class="fa fa-chevron-left goBack" (click)="close();"></i>
+    <ion-title align="center">
+        <img  src="{{ dataHome?.logo }}" class="title-logo">
+        <span class="title-header">Thai Herbal</span>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div align="center" style="color: #ae840d; font-weight: 100; line-height: 28px !important;">
+    <h2 style="color: #ae840d; font-size: 40px; font-weight: bold !important;">รายละเอียดและเงื่อนไข</h2>
+    <span style="color: #ae840d; font-size: 30px; font-weight: 100; line-height: 28px;">Terms and Conditions</span>
+  </div>
+  <hr style="background-color: #d2b266; width: 30%; height: 2px;">
+  <div class="detail-app" [innerHTML]="dataPolicy"></div>
+</ion-content>

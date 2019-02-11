@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar>
     <ion-title align="center">
-      <img src="{{ dataHome?.logo }}" style="width: 10%;vertical-align: middle;">
-      <span style="color: white;vertical-align: middle;font-size: 30px;">Thai Herbal</span>
+      <img src="{{ dataHome?.logo }}" class="title-logo">
+      <span class="title-header">Thai Herbal</span>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="forgot-box">
-        <a class="link" href="{$ul}/member/forgot">
+        <a class="link" (click)="forgetpassword();">
           ลืมรหัสผ่าน / Forgot Password
         </a>
       </div>
