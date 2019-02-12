@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 /**
  * Generated class for the SearchPage page.
  *
@@ -18,8 +18,10 @@ export class SearchPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    public screenOrientation: ScreenOrientation,
   ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
   }
 
   ionViewDidLoad() {
@@ -27,7 +29,7 @@ export class SearchPage {
     this.dataHome = JSON.parse(localStorage.home)
   }
 
-  close(){
+  close() {
     let option = {
       name: 'Test',
       id: 191

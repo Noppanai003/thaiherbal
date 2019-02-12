@@ -5,7 +5,7 @@ import { UserPage } from '../user/user';
 import { RegisterPage } from '../register/register';
 import { ForgotpassPage } from '../forgotpass/forgotpass';
 import * as $ from "jquery";
-
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 /**
  * Generated class for the LoginPage page.
@@ -35,7 +35,9 @@ export class LoginPage {
     public modalController: ModalController,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
+    public screenOrientation: ScreenOrientation,
   ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     this.isButton = true;
   }
 
@@ -58,7 +60,7 @@ export class LoginPage {
     this.loader.present();
   }
 
-  showAlert(title,msg) {
+  showAlert(title, msg) {
     const alert = this.alertCtrl.create({
       title: title,
       subTitle: msg,
@@ -74,17 +76,17 @@ export class LoginPage {
   }
 
   // async eventInput(){
-    // this.isButton = await ($('#member_login_email').val() != "" && $('#member_login_password').val() != "") ? true:false;
-    
+  // this.isButton = await ($('#member_login_email').val() != "" && $('#member_login_password').val() != "") ? true:false;
+
   //   $('#member_login_email').focus()
   //   // console.log(this.isButton)
   // }
 
   async login() {
-    if($('#member_login_email').val() == ""){
+    if ($('#member_login_email').val() == "") {
       $('#member_login_email').focus();
       return false;
-    }else if($('#member_login_password').val() == ""){
+    } else if ($('#member_login_password').val() == "") {
       $('#member_login_password').focus();
       return false;
     }
@@ -98,8 +100,8 @@ export class LoginPage {
           await localStorage.setItem('member', JSON.stringify(data.member_info))
           this.loader.dismiss()
           this.navCtrl.setRoot(UserPage)
-        }else{
-          this.showAlert('เข้าสู่ระบบไม่สำเร็จ','ที่อยู่อีเมลหรือรหัสผ่านของคุณไม่ถูกต้อง กรุณาลองอีกครั้ง')
+        } else {
+          this.showAlert('เข้าสู่ระบบไม่สำเร็จ', 'ที่อยู่อีเมลหรือรหัสผ่านของคุณไม่ถูกต้อง กรุณาลองอีกครั้ง')
           this.loader.dismiss()
         }
       })
@@ -107,7 +109,7 @@ export class LoginPage {
 
 
   }
-  
+
   async forgetpassword() {
     // this.navCtrl.push(ForgotpassPage);
     const modal = await this.modalController.create(ForgotpassPage);

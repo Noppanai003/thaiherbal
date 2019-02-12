@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
-
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 /**
  * Generated class for the PolicyPage page.
  *
@@ -22,7 +22,9 @@ export class PolicyPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public userProvider: UserProvider,
+    public screenOrientation: ScreenOrientation,
   ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
   }
 
   ionViewDidLoad() {
@@ -31,13 +33,13 @@ export class PolicyPage {
     this.loadPolicy()
   }
 
-  async loadPolicy(){
+  async loadPolicy() {
     await this.userProvider.loadPolicy().subscribe(async (data: any) => {
       this.dataPolicy = data.policy[this.navParams.data.lang]
     })
   }
 
-  close(){
+  close() {
     this.navCtrl.pop();
   }
 }

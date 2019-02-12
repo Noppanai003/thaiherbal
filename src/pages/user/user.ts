@@ -5,7 +5,7 @@ import { UserProvider } from '../../providers/user/user';
 import * as $ from "jquery";
 import { EditprofilePage } from '../editprofile/editprofile';
 import { EditpasswordPage } from '../editpassword/editpassword';
-
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 /**
  * Generated class for the UserPage page.
  *
@@ -28,7 +28,9 @@ export class UserPage {
     public navParams: NavParams,
     public userProvider: UserProvider,
     public modalController: ModalController,
+    public screenOrientation: ScreenOrientation,
   ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
   }
 
@@ -70,10 +72,10 @@ export class UserPage {
     formData.append('uploadProfile', this.image);
     formData.append('keyProfile', 'mem');
     formData.append('access_token', localStorage.access_token);
-    await this.userProvider.uploadPhoto(formData).subscribe(async (data:any)=>{
-      if(!data.status){
+    await this.userProvider.uploadPhoto(formData).subscribe(async (data: any) => {
+      if (!data.status) {
         alert(data.message)
-      }else{
+      } else {
         await this.loadProfile()
       }
     })

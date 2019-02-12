@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
-
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 /**
  * Generated class for the ForgotpassPage page.
  *
@@ -17,13 +17,15 @@ import { UserProvider } from '../../providers/user/user';
 export class ForgotpassPage {
   dataHome: any;
   formforgot = {
-    email_forgot : ''
+    email_forgot: ''
   }
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public userProvider: UserProvider,
-    ) {
+    public screenOrientation: ScreenOrientation,
+  ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
   }
 
   ionViewDidLoad() {
@@ -31,11 +33,11 @@ export class ForgotpassPage {
     this.dataHome = JSON.parse(localStorage.home)
   }
 
-  async forgotpass(){
+  async forgotpass() {
     // if (!this.formforgot.email_forgot) {
     //   return alert('กรุณาใส่ข้อมูลให้ครบถ้วน!!');
     // }
-    await this.userProvider.forgot(this.formforgot).subscribe(async(data: any) => {
+    await this.userProvider.forgot(this.formforgot).subscribe(async (data: any) => {
       // if (data.status) {
       //   alert('สมัครสมาชิก สำเร็จ!!')
       //   this.close()
@@ -46,7 +48,7 @@ export class ForgotpassPage {
     })
   }
 
-  close(){
+  close() {
     this.navCtrl.pop();
   }
 

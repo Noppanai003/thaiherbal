@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import * as $ from "jquery";
-
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 /**
  * Generated class for the EditprofilePage page.
  *
@@ -31,12 +31,14 @@ export class EditprofilePage {
     access_token: localStorage.access_token
   }
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public userProvider: UserProvider,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    ) {
+    public screenOrientation: ScreenOrientation,
+  ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
   }
 
   async ionViewDidLoad() {
@@ -56,7 +58,7 @@ export class EditprofilePage {
     this.loader.present();
   }
 
-  showAlert(title,msg,option) {
+  showAlert(title, msg, option) {
     const alert = this.alertCtrl.create({
       title: title,
       subTitle: msg,
@@ -65,18 +67,18 @@ export class EditprofilePage {
     alert.present();
   }
 
-  async loadjob(){
-    await this.userProvider.loadEditprofile().subscribe(async(data: any) => {
+  async loadjob() {
+    await this.userProvider.loadEditprofile().subscribe(async (data: any) => {
       this.loadJOB = data.listjob
     })
   }
-  async loadedu(){
-    await this.userProvider.loadEditprofile().subscribe(async(data: any) => {
-      this.loadEDU= data.listedu
+  async loadedu() {
+    await this.userProvider.loadEditprofile().subscribe(async (data: any) => {
+      this.loadEDU = data.listedu
     })
   }
 
-  editProfile(){
+  editProfile() {
     let regExrTel = /^(?:0|\(?\+66\)?\s?|0066\s?)[1-9](?:[\.\-\s]?\d){7,8}$/;
     if (this.formeditProfile.inputOrganize == '') {
       $('#inputOrganize').focus();
@@ -101,34 +103,34 @@ export class EditprofilePage {
       return false;
     }
 
-    if(this.formeditProfile.inputTel){
+    if (this.formeditProfile.inputTel) {
       let result = regExrTel.test(this.formeditProfile.inputTel);
-      if (!result){
+      if (!result) {
         // this.showAlertLogin('การสมัครไม่สำเร็จ',"รูปแบบเบอร์โทรของท่านไม่ถูกต้อง")
         $('#inputTel').focus();
         return false;
       }
     }
     this.presentLoading();
-    this.userProvider.editprofile(this.formeditProfile).subscribe(async(data: any) => {
+    this.userProvider.editprofile(this.formeditProfile).subscribe(async (data: any) => {
       if (data.status) {
         this.loader.dismiss()
         let option = {
           text: 'ตกลง',
-          handler: () =>{
+          handler: () => {
             this.navCtrl.pop()
           }
         }
-        this.showAlert('บันทึกข้อมูลเรียบร้อย','การแก้ไขข้อมูลของท่านเสร็จสมบูรณ์',option)
+        this.showAlert('บันทึกข้อมูลเรียบร้อย', 'การแก้ไขข้อมูลของท่านเสร็จสมบูรณ์', option)
       }
-      else{
+      else {
         let option = {
           text: 'ตกลง',
-          handler: () =>{
+          handler: () => {
           }
         }
         this.loader.dismiss()
-        this.showAlert('แก้ไขข้อมูลไม่สำเร็จ','กรุณากรอกข้อมูลใหม่อีกครั้ง',option)
+        this.showAlert('แก้ไขข้อมูลไม่สำเร็จ', 'กรุณากรอกข้อมูลใหม่อีกครั้ง', option)
       }
     })
   }

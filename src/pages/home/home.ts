@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HomeProvider } from '../../providers/home/home';
-
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -21,20 +21,21 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    public homeProvider: HomeProvider, 
+    public homeProvider: HomeProvider,
+    public screenOrientation: ScreenOrientation,
+  ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
-    ) {
-     
   }
 
   async ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
-    
+
     await this.homeProvider.loadHome().subscribe(async (data: any) => {
       await localStorage.setItem('home', JSON.stringify(data));
       this.dataHome = JSON.parse(localStorage.home)
       // console.log(this.dataHome);
-      
+
       // this.base_url = data.base_url
       // this.subject = data.subject
       // this.subjectEng = data.subjectEng
@@ -45,9 +46,9 @@ export class HomePage {
       // this.about = data.about
       // this.contact = data.contact
       // this.logo = data.logo
-      
+
       // console.log("this.contact",this.contact);
-    
+
       // if (data.status) {
       //   await localStorage.setItem('users_username',data.users_username);
       //   this.navCtrl.setRoot(TabsPage);
@@ -57,6 +58,6 @@ export class HomePage {
       // this.loading.dismiss();
     })
   }
-  
+
 
 }

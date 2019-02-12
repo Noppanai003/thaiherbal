@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController, AlertController, 
 import { PolicyPage } from '../policy/policy';
 import { UserProvider } from '../../providers/user/user';
 import * as $ from "jquery";
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 /**
  * Generated class for the RegisterPage page.
  *
@@ -40,7 +41,9 @@ export class RegisterPage {
     public userProvider: UserProvider,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
+    public screenOrientation: ScreenOrientation,
   ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
   }
 
   ionViewDidLoad() {
@@ -68,7 +71,7 @@ export class RegisterPage {
     alert.present();
   }
 
-  async register(){
+  async register() {
     let regExrTel = /^(?:0|\(?\+66\)?\s?|0066\s?)[1-9](?:[\.\-\s]?\d){7,8}$/;
     let regExrMail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let regExrPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
@@ -107,48 +110,48 @@ export class RegisterPage {
       return false;
     }
 
-    
-    if(this.formregister.inputPassword){
+
+    if (this.formregister.inputPassword) {
       let result = regExrPassword.test(this.formregister.inputPassword);
-      if (!result){
-          // await this.showAlertLogin('การสมัครไม่สำเร็จ',"รูปแบบรหัสผ่านของท่านไม่ถูกต้อง\nจะต้องเป็นตัวอักษรภาษาอังกฤษ หรือ ตัวเลข อย่างน้อย 8 หลักขึ้นไป และจะต้องมีตัวอักษรภาษาอังกฤษตัวพิมพ์ใหญ่อย่างน้อย 1 ตัว")
-          $('#inputPassword').focus();
-          return false;
+      if (!result) {
+        // await this.showAlertLogin('การสมัครไม่สำเร็จ',"รูปแบบรหัสผ่านของท่านไม่ถูกต้อง\nจะต้องเป็นตัวอักษรภาษาอังกฤษ หรือ ตัวเลข อย่างน้อย 8 หลักขึ้นไป และจะต้องมีตัวอักษรภาษาอังกฤษตัวพิมพ์ใหญ่อย่างน้อย 1 ตัว")
+        $('#inputPassword').focus();
+        return false;
       }
-    }else if(this.formregister.inputRepassword){
+    } else if (this.formregister.inputRepassword) {
       let result = regExrPassword.test(this.formregister.inputPassword);
-      if (!result){
-          // await this.showAlertLogin('การสมัครไม่สำเร็จ',"รูปแบบรหัสผ่านของท่านไม่ถูกต้อง\nจะต้องเป็นตัวอักษรภาษาอังกฤษ หรือ ตัวเลข อย่างน้อย 8 หลักขึ้นไป และจะต้องมีตัวอักษรภาษาอังกฤษตัวพิมพ์ใหญ่อย่างน้อย 1 ตัว")
-          $('#inputRepassword').focus();
-          return false;
-      }
-    }
-    
-    if(this.formregister.inputPassword != this.formregister.inputRepassword){
-        // await this.showAlertLogin('การสมัครไม่สำเร็จ',"การยืนยันรหัสผ่านของท่านไม่ถูกต้อง")
+      if (!result) {
+        // await this.showAlertLogin('การสมัครไม่สำเร็จ',"รูปแบบรหัสผ่านของท่านไม่ถูกต้อง\nจะต้องเป็นตัวอักษรภาษาอังกฤษ หรือ ตัวเลข อย่างน้อย 8 หลักขึ้นไป และจะต้องมีตัวอักษรภาษาอังกฤษตัวพิมพ์ใหญ่อย่างน้อย 1 ตัว")
         $('#inputRepassword').focus();
-        return false;      
+        return false;
+      }
     }
-    
-    if(this.formregister.inputEmail){
+
+    if (this.formregister.inputPassword != this.formregister.inputRepassword) {
+      // await this.showAlertLogin('การสมัครไม่สำเร็จ',"การยืนยันรหัสผ่านของท่านไม่ถูกต้อง")
+      $('#inputRepassword').focus();
+      return false;
+    }
+
+    if (this.formregister.inputEmail) {
       let result = regExrMail.test(this.formregister.inputEmail);
-      if (!result){
+      if (!result) {
         // this.showAlertLogin('การสมัครไม่สำเร็จ',"รูปแบบเบอร์โทรของท่านไม่ถูกต้อง")
         $('#inputEmail').focus();
         return false;
       }
     }
 
-    if(this.formregister.inputTel){
+    if (this.formregister.inputTel) {
       let result = regExrTel.test(this.formregister.inputTel);
-      if (!result){
+      if (!result) {
         // this.showAlertLogin('การสมัครไม่สำเร็จ',"รูปแบบเบอร์โทรของท่านไม่ถูกต้อง")
         $('#inputTel').focus();
         return false;
       }
     }
     this.presentLoading();
-    this.userProvider.register(this.formregister).subscribe(async(data: any) => {
+    this.userProvider.register(this.formregister).subscribe(async (data: any) => {
       if (data.status) {
         this.loader.dismiss()
         let option = {
@@ -157,42 +160,42 @@ export class RegisterPage {
             this.navCtrl.pop()
           }
         }
-        this.showAlert('สมัครสมาชิกเรียบร้อยแล้ว','แต่ท่านต้องทำการยืนยัน E-mail ก่อน ระบบจะส่ง link เพื่อยืนยันไปยัง E-mail ที่ท่านระบุไว้ กรุณากด link เพื่อยืนยันอีกครั้ง เพื่อการสมัครสมาชิกที่สมบูรณ์',option)
+        this.showAlert('สมัครสมาชิกเรียบร้อยแล้ว', 'แต่ท่านต้องทำการยืนยัน E-mail ก่อน ระบบจะส่ง link เพื่อยืนยันไปยัง E-mail ที่ท่านระบุไว้ กรุณากด link เพื่อยืนยันอีกครั้ง เพื่อการสมัครสมาชิกที่สมบูรณ์', option)
         this.navCtrl.pop()
-      }else{
+      } else {
         this.loader.dismiss()
         let option = {
           text: 'ตกลง',
           handler: () => {
           }
         }
-        this.showAlert('การสมัครไม่สำเร็จ',data.message,option)
+        this.showAlert('การสมัครไม่สำเร็จ', data.message, option)
       }
     })
   }
 
-  async loadjob(){
-    await this.userProvider.loadRegister().subscribe(async(data: any) => {
+  async loadjob() {
+    await this.userProvider.loadRegister().subscribe(async (data: any) => {
       this.loadJOB = data.listjob
     })
   }
-  async loadedu(){
-    await this.userProvider.loadRegister().subscribe(async(data: any) => {
-      this.loadEDU= data.listedu
+  async loadedu() {
+    await this.userProvider.loadRegister().subscribe(async (data: any) => {
+      this.loadEDU = data.listedu
     })
   }
 
-  policy(lang='th'){
+  policy(lang = 'th') {
     let option = {
       lang: lang
     }
     // this.navCtrl.push(PolicyPage,option);
     const modal = this.modalController.create(
-        PolicyPage,
-        option
+      PolicyPage,
+      option
     );
     return modal.present();
-    
+
   }
 
   close() {
