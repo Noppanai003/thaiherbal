@@ -1,3 +1,34 @@
 page-viewebook {
+  ion-content {
+    background: #fff !important;
+  }
 
+
+  .content-md .title{
+    font-size: 3rem;
+  }
+
+  .content-ios .title{
+    font-size: 2.5rem;
+  }
+
+  .content-md .ck-detail{
+    font-size: 2.5rem;
+  }
+
+  .content-ios .ck-detail{
+    font-size: 2.2rem;
+  }
+  
+  .content-md .subtitle{
+    font-weight: normal;
+    font-size: 2.5rem;
+    margin-top: 0px;
+  }
+
+  .content-ios .subtitle{
+    font-weight: normal;
+    font-size: 2.2rem;
+    margin-top: 0px;
+  }
 }

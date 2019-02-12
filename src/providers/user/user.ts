@@ -13,6 +13,8 @@ export class UserProvider {
   URL_LOGIN = 'http://wewebplaza.com/thaiherbal/api/login';
   URL_FORGOT = 'http://wewebplaza.com/thaiherbal/api/forgot';
   URL_PROFILE = 'http://wewebplaza.com/thaiherbal/api/profile';
+  URL_EDITPROFILE = 'http://wewebplaza.com/thaiherbal/api/editprofile';
+  URL_EDITPASS = 'http://wewebplaza.com/thaiherbal/api/editpass';
   URL_REGISTER = 'http://wewebplaza.com/thaiherbal/api/register';
   URL_UPLOAD_PROFILE = 'http://wewebplaza.com/thaiherbal/api/upload?type=add&key=mem';
   constructor(public http: HttpClient) {
@@ -33,6 +35,22 @@ export class UserProvider {
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT');
     return this.http.post(this.URL_REGISTER,JSON.stringify(data), { headers: headers })
+  }
+
+  editpass(data){
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT');
+    return this.http.post(this.URL_EDITPASS,JSON.stringify(data), { headers: headers })
+  }
+
+  editprofile(data){
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT');
+    return this.http.post(this.URL_EDITPROFILE,JSON.stringify(data), { headers: headers })
   }
 
   forgot(data){
@@ -64,6 +82,10 @@ export class UserProvider {
   }
 
   loadRegister() {
+    return this.http.get(this.URL_REGISTER)
+  }
+
+  loadEditprofile() {
     return this.http.get(this.URL_REGISTER)
   }
 

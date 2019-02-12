@@ -63,12 +63,12 @@
 
   <ion-item-group>
     <ion-item-divider color="light">ตั้งค่า</ion-item-divider>
-    <button ion-item>
+    <button ion-item (click)="editProfile();">
       <ion-icon name="ios-construct-outline" item-start></ion-icon>
       แก้ไขข้อมูลส่วนตัว
     </button>
 
-    <button ion-item>
+    <button ion-item (click)="editPass();">
       <ion-icon name="ios-lock-outline" item-start></ion-icon>
       เปลี่ยนรหัสผ่าน
     </button>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController, LoadingController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { UserPage } from '../user/user';
 import { RegisterPage } from '../register/register';
@@ -33,18 +33,38 @@ export class LoginPage {
     public navParams: NavParams,
     public userProvider: UserProvider,
     public modalController: ModalController,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
   ) {
-    this.isButton = false;
+    this.isButton = true;
   }
 
   async ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
     this.checkToken()
     this.dataHome = JSON.parse(localStorage.home);
-    let _this = this;
-    $( "input" ).change(function() {
-      _this.eventInput();
+    // let _this = this;
+    // $( "input" ).change(function() {
+    //   _this.eventInput();
+    // });
+  }
+
+  loader: any
+  presentLoadingLogin() {
+    this.loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      duration: 3000
     });
+    this.loader.present();
+  }
+
+  showAlert(title,msg) {
+    const alert = this.alertCtrl.create({
+      title: title,
+      subTitle: msg,
+      buttons: ['ตกลง']
+    });
+    alert.present();
   }
 
   checkToken() {
@@ -53,11 +73,12 @@ export class LoginPage {
     }
   }
 
-  async eventInput(){
-    this.isButton = await ($('#member_login_email').val() != "" && $('#member_login_password').val() != "") ? true:false;
-    $('#member_login_email').focus()
-    // console.log(this.isButton)
-  }
+  // async eventInput(){
+    // this.isButton = await ($('#member_login_email').val() != "" && $('#member_login_password').val() != "") ? true:false;
+    
+  //   $('#member_login_email').focus()
+  //   // console.log(this.isButton)
+  // }
 
   async login() {
     if($('#member_login_email').val() == ""){
@@ -67,23 +88,19 @@ export class LoginPage {
       $('#member_login_password').focus();
       return false;
     }
-    // let regExr = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
-    // let result = regExr.test(this.formLogin.member_login_password);
-    // if (!result) {
-    //   alert('โปรดกรอกรูปแบบข้อมูลให้ถูกต้อง')
-    //   return false;
-    // }
 
-
-    // this.password.setFocus();
-    // console.log("this.formLogin", this.formLogin);
     if (this.formLogin.member_login_email && this.formLogin.member_login_password) {
+      this.presentLoadingLogin()
       await this.userProvider.login(this.formLogin).subscribe(async (data: any) => {
         // console.log(data);
         if (data.login_status) {
           await localStorage.setItem('access_token', data.access_token)
           await localStorage.setItem('member', JSON.stringify(data.member_info))
-          this.navCtrl.setRoot(UserPage);
+          this.loader.dismiss()
+          this.navCtrl.setRoot(UserPage)
+        }else{
+          this.showAlert('เข้าสู่ระบบไม่สำเร็จ','ที่อยู่อีเมลหรือรหัสผ่านของคุณไม่ถูกต้อง กรุณาลองอีกครั้ง')
+          this.loader.dismiss()
         }
       })
     }

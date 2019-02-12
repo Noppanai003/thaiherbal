@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { UserProvider } from '../../providers/user/user';
 import * as $ from "jquery";
+import { EditprofilePage } from '../editprofile/editprofile';
+import { EditpasswordPage } from '../editpassword/editpassword';
 
 /**
  * Generated class for the UserPage page.
@@ -25,6 +27,7 @@ export class UserPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public userProvider: UserProvider,
+    public modalController: ModalController,
   ) {
 
   }
@@ -84,5 +87,17 @@ export class UserPage {
     await localStorage.removeItem('access_token')
     await localStorage.removeItem('member')
     this.checkToken()
+  }
+
+  async editProfile() {
+    // this.navCtrl.push(ForgotpassPage);
+    const modal = await this.modalController.create(EditprofilePage);
+    return await modal.present();
+  }
+
+  async editPass() {
+    // this.navCtrl.push(ForgotpassPage);
+    const modal = await this.modalController.create(EditpasswordPage);
+    return await modal.present();
   }
 }

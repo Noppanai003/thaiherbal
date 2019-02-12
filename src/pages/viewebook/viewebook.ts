@@ -15,11 +15,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ViewebookPage {
 
+  dataEbook: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.dataEbook = this.navParams.data.data.data
+    console.log(this.dataEbook);
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewebookPage');
+  }
+
+  close() {
+    this.navCtrl.pop()
   }
 
 }
