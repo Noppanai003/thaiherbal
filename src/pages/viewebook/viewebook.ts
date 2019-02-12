@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 /**
  * Generated class for the ViewebookPage page.
  *
@@ -16,10 +16,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ViewebookPage {
 
   dataEbook: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public screenOrientation: ScreenOrientation
+  ) {
+    this.screenOrientation.unlock()
     this.dataEbook = this.navParams.data.data.data
     console.log(this.dataEbook);
-    
+
   }
 
   ionViewDidLoad() {

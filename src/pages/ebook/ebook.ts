@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { EbookProvider } from '../../providers/ebook/ebook';
 import { ViewebookPage } from '../viewebook/viewebook';
 import { SearchPage } from '../search/search';
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 /**
  * Generated class for the EbookPage page.
@@ -26,9 +25,7 @@ export class EbookPage {
     public navParams: NavParams,
     public ebookProvider: EbookProvider,
     public modalController: ModalController,
-    public screenOrientation: ScreenOrientation,
   ) {
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
   }
 
   async ionViewDidLoad() {

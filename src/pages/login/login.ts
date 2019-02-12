@@ -5,7 +5,6 @@ import { UserPage } from '../user/user';
 import { RegisterPage } from '../register/register';
 import { ForgotpassPage } from '../forgotpass/forgotpass';
 import * as $ from "jquery";
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 /**
  * Generated class for the LoginPage page.
@@ -35,9 +34,9 @@ export class LoginPage {
     public modalController: ModalController,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    public screenOrientation: ScreenOrientation,
+
   ) {
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+
     this.isButton = true;
   }
 

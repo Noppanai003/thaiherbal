@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import * as $ from "jquery";
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 /**
  * Generated class for the EditpasswordPage page.
  *
@@ -29,9 +28,9 @@ export class EditpasswordPage {
     public userProvider: UserProvider,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    public screenOrientation: ScreenOrientation,
+  
   ) {
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  
   }
 
   ionViewDidLoad() {

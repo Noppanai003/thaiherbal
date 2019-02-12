@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, ModalController, AlertController, 
 import { PolicyPage } from '../policy/policy';
 import { UserProvider } from '../../providers/user/user';
 import * as $ from "jquery";
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 /**
  * Generated class for the RegisterPage page.
  *
@@ -41,9 +40,9 @@ export class RegisterPage {
     public userProvider: UserProvider,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    public screenOrientation: ScreenOrientation,
+
   ) {
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+
   }
 
   ionViewDidLoad() {

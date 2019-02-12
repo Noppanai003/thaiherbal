@@ -17,6 +17,7 @@ import { ForgotpassPage } from '../pages/forgotpass/forgotpass';
 import { ViewebookPage } from '../pages/viewebook/viewebook';
 import { EditpasswordPage } from '../pages/editpassword/editpassword';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
+import { SearchPage } from '../pages/search/search';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeProvider } from '../providers/home/home';
 import { UserProvider } from '../providers/user/user';
 import { EbookProvider } from '../providers/ebook/ebook';
-import { SearchPage } from '../pages/search/search';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 
 
@@ -77,7 +78,8 @@ import { SearchPage } from '../pages/search/search';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HomeProvider,
     UserProvider,
-    EbookProvider, 
+    EbookProvider,
+    ScreenOrientation,
   ]
 })
 export class AppModule {}
