@@ -10,13 +10,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UserProvider {
 
-  URL_LOGIN = 'http://wewebplaza.com/thaiherbal/api/login';
-  URL_FORGOT = 'http://wewebplaza.com/thaiherbal/api/forgot';
-  URL_PROFILE = 'http://wewebplaza.com/thaiherbal/api/profile';
-  URL_EDITPROFILE = 'http://wewebplaza.com/thaiherbal/api/editprofile';
-  URL_EDITPASS = 'http://wewebplaza.com/thaiherbal/api/editpass';
-  URL_REGISTER = 'http://wewebplaza.com/thaiherbal/api/register';
-  URL_UPLOAD_PROFILE = 'http://wewebplaza.com/thaiherbal/api/upload?type=add&key=mem';
+  URL_LOGIN = 'https://bdn.go.th/thp/api/login';
+  URL_FORGOT = 'https://bdn.go.th/thp/api/forgot';
+  URL_PROFILE = 'https://bdn.go.th/thp/api/profile';
+  URL_EDITPROFILE = 'https://bdn.go.th/thp/api/editprofile';
+  URL_EDITPASS = 'https://bdn.go.th/thp/api/editpass';
+  URL_REGISTER = 'https://bdn.go.th/thp/api/register';
+  URL_UPLOAD_PROFILE = 'https://bdn.go.th/thp/api/upload?type=add&key=mem';
   constructor(public http: HttpClient) {
     console.log('Hello UserProvider Provider');
   }

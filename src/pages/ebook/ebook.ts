@@ -28,7 +28,7 @@ export class EbookPage {
     public modalController: ModalController,
     public screenOrientation: ScreenOrientation,
   ) {
-    // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
   }
 
   async ionViewDidLoad() {
@@ -42,7 +42,7 @@ export class EbookPage {
   async ionViewDidEnter() {
     console.log('ionViewDidEnter');
     
-    // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
     await this.checkToken()
   }
 
@@ -127,7 +127,7 @@ export class EbookPage {
         const modal = await this.modalController.create(ViewebookPage, options);
         modal.onDidDismiss(data => {
           console.log('onDidDismiss');
-          // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+          this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
         });
         return await modal.present();
       })
@@ -136,8 +136,13 @@ export class EbookPage {
 
   async search() {
     const modal = await this.modalController.create(SearchPage);
-    modal.onDidDismiss(data => {
-      console.log("search by page Ebook", data.name);
+    modal.onDidDismiss(async data => {
+      await this.ebookProvider.search(data).subscribe(async (data: any) => {
+        console.log(data);
+        this.active = 'listsearchcontent'
+        this.headContent = 'ผลลัพธ์จากการค้นหา'
+        this.listContent = await data.data
+      })
     });
     return await modal.present();
   }

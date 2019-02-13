@@ -25,7 +25,7 @@ export class HomePage {
     public screenOrientation: ScreenOrientation,
     public loadingCtrl: LoadingController,
   ) {
-    // this.screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT)
+    this.screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT)
   }
 
   async ionViewDidLoad() {
@@ -48,7 +48,7 @@ export class HomePage {
   }
 
   async ionViewDidEnter() {
-    // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
   }
 
 

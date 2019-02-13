@@ -15,13 +15,22 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 })
 export class SearchPage {
   dataHome: any
+  form = {
+    catagory: '',
+    subcatagory: '',
+    keytype: '',
+    search: '',
+    searchby: 'some',
+    page: 1,
+    access_token: localStorage.access_token
+  }
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
     public screenOrientation: ScreenOrientation,
   ) {
-    // this.screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT)
+    this.screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT)
 
   }
 
@@ -31,14 +40,14 @@ export class SearchPage {
   }
 
   async ionViewDidEnter() {
-    // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+  }
+
+  search() {
+    this.viewCtrl.dismiss(this.form)
   }
   
   close() {
-    let option = {
-      name: 'Test',
-      id: 191
-    }
-    this.viewCtrl.dismiss(option)
+    this.viewCtrl.dismiss()
   }
 }

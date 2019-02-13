@@ -53,7 +53,7 @@ export class LoginPage {
   }
 
   async ionViewDidEnter() {
-    // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
   }
   
   loader: any

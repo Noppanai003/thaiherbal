@@ -9,10 +9,13 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class EbookProvider {
-  URL_EBOOK = 'http://wewebplaza.com/thaiherbal/api/ebooks/'
+  URL_EBOOK = 'https://bdn.go.th/thp/api/ebooks/'
 
-  URL_CATEGORYS = 'http://wewebplaza.com/thaiherbal/api/categorys/'
-  URL_SUBCATEGORYS = 'http://wewebplaza.com/thaiherbal/api/subcategorys/'
+  URL_CATEGORYS = 'https://bdn.go.th/thp/api/categorys/'
+  URL_SUBCATEGORYS = 'https://bdn.go.th/thp/api/subcategorys/'
+
+  URL_SHERCH = 'https://bdn.go.th/thp/api/search/'
+  
 
   constructor(public http: HttpClient) {
     console.log('Hello EbookProvider Provider');
@@ -40,6 +43,10 @@ export class EbookProvider {
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT');
     return this.http.post(this.URL_EBOOK + data.cms_id, JSON.stringify(data), { headers: headers })
+  }
+
+  search(data) {
+    return this.http.get(this.URL_SHERCH + '?catagory=' + data.catagory + '&subcatagory=' + data.subcatagory + '&keytype=' + data.keytype + '&search=' + data.search + '&searchby=' + data.searchby + '&page=' + data.page + '&access_token=' + data.access_token)
   }
 }
 

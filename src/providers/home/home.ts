@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class HomeProvider {
-  URL_HOME = 'http://wewebplaza.com/thaiherbal/api/home';
+  URL_HOME = 'https://bdn.go.th/thp/api/home';
   // URL_REGISTER = 'http://localhost/wwp/actionRegister.php';
   constructor(public http: HttpClient) {
     console.log('Hello HomeProvider Provider');

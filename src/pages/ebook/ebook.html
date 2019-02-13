@@ -2,6 +2,7 @@
   <ion-navbar>
     <i *ngIf="active == 'subcategory'" class="fa fa-chevron-left goBack" (click)="loadCategory();"></i>
     <i *ngIf="active == 'listcontent'" class="fa fa-chevron-left goBack" (click)="loadSubCategory(data.cid,data.cname);"></i>
+    <i *ngIf="active == 'listsearchcontent'" class="fa fa-chevron-left goBack" (click)="loadCategory();"></i>
     <i class="fa fa-search iconRight" aria-hidden="true" (click)="search();"></i>
     <ion-title align="center">
       <img src="{{ dataHome?.logo }}" class="title-logo">
@@ -36,11 +37,6 @@
       </button>
     </div>
 
-
-
-
-
-
     <div *ngIf="active == 'listcontent'">
       <button ion-item *ngFor="let item of listContent" (click)="viewContent(data.cid,data.gid,item.md_cms_id,data.cname);">
         {{item.md_cms_subject}}
@@ -49,6 +45,12 @@
       <ion-infinite-scroll (ionInfinite)="doInfiniteloadListContent($event,data)">
         <ion-infinite-scroll-content></ion-infinite-scroll-content>
       </ion-infinite-scroll>
+    </div>
+
+    <div *ngIf="active == 'listsearchcontent'">
+      <button ion-item *ngFor="let item of listContent" (click)="viewContent(item.md_cms_cid,item.md_cms_gid,item.md_cms_id,'');">
+        {{item.md_cms_subject}}
+      </button>
     </div>
 
 
