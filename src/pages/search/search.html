@@ -11,5 +11,136 @@
 
 
 <ion-content padding>
+  <form method="POST" role="form" class="form-default" novalidate="true">
+    <div class="container">
+      <div class="" align="center" style="color: #ae840d; font-weight: 100; line-height: 28px !important;">
+        <h1 class="" style="color: #ae840d; font-size: 40px; font-weight: bold !important;">ค้นหา</h1>
+        <span class="" style="color: #ae840d; font-size: 30px; font-weight: 100; line-height: 28px;">Search</span>
+      </div>
+      <hr style="background-color: #d2b266; width: 30%; height: 2px; margin-bottom: 20px;">
 
+      <div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group has-feedback">
+              <label class="control-label">พิมพ์คำค้นหา / Keyword</label>
+              <div class="block-control">
+                <input type="text" class="form-control" id="inputOrganize" name="inputOrganize" placeholder="พิมพ์คำค้นหา / Keyword"
+                  required="">
+                <span class="form-control-feedback" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+              <div class="form-group has-feedback has-success">
+                <label class="control-label">ค้นหาคำ / Word search</label>
+                <select class="form-control select2-hidden-accessible" id="inputGender" name="inputGender" size="1"
+                  style="width: 100%;" tabindex="-1" aria-hidden="true">
+                  <option value="1" selected="">ค้นหาบางส่วนของคำ / Find some words</option>
+                  <option value="2">ค้นหาโดยคำค้นเท่านั้น / Only keywords</option>
+                </select>
+              </div>
+            </div>
+          <div class="col-md-12">
+            <div class="form-group has-feedback has-success">
+              <label class="control-label">หมวดหมู่ / Category</label>
+              <select class="form-control select2-hidden-accessible" id="inputGender" name="inputGender" size="1"
+                style="width: 100%;" tabindex="-1" aria-hidden="true">
+                <option value="" selected="">ทั้งหมด / All</option>
+                <option value="1">ชาย</option>
+                <option value="2">หญิง</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group has-feedback has-success">
+              <label class="control-label">หมวดหมู่ย่อย / Subcategory</label>
+              <select class="form-control select2-hidden-accessible" id="inputGender" name="inputGender" size="1"
+                style="width: 100%;" tabindex="-1" aria-hidden="true">
+                <option value="" selected="">ทั้งหมด / All</option>
+                <option value="1">ชาย</option>
+                <option value="2">หญิง</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+              <div class="form-group has-feedback has-success">
+                <label class="control-label">ค้นหาโดย / Search by</label>
+                <select class="form-control select2-hidden-accessible" id="inputGender" name="inputGender" size="1"
+                  style="width: 100%;" tabindex="-1" aria-hidden="true">
+                  <option value="" selected="">ทั้งหมด / All</option>
+                  <option value="1">ชาย</option>
+                  <option value="2">หญิง</option>
+                </select>
+              </div>
+            </div>
+          <!-- <div class="col-sm-4">
+              <div class="form-group">
+                  <ul class="radio-list item-list">
+                      <li>
+                          <div class="radio-control">
+                              <input type="radio" name="searchby" value="some" checked="">
+                              <div class=""></div>
+                              <div class="">ค้นหาบางส่วนของคำ / Find some words</div>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div> -->
+
+          <!-- <div class="checkbox-block">
+              <ion-grid>
+                  <ion-list radio-group>
+                <ion-row>
+                    <ion-col>
+                        <ion-radio checked="true" name="nn" value="go"  style="vertical-align: middle;"></ion-radio>
+                        <span style="vertical-align: middle;font-size: 20px; margin-left: 15px;">ค้นหาบางส่วนของคำ / Find some words</span>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                      <ion-radio name="mm" value="trh" style="vertical-align: middle;"></ion-radio>
+                      <span style="vertical-align: middle;font-size: 20px; margin-left: 15px;">ค้นหาโดยคำค้นเท่านั้น / Only keywords</span>
+                    </ion-col>
+                </ion-row>
+              </ion-list>
+              </ion-grid>
+            </div> -->
+
+            <!-- <div class="col-md-6">
+              <ion-list radio-group style="background: rgba(255, 255, 255, 0); border-style: none;">
+                <ion-item style="background: rgba(255, 255, 255, 0); border-style: none;">
+                  <ion-radio checked="true" value="go"></ion-radio>
+                  <ion-label style="font-size: 20px;">ค้นหาบางส่วนของคำ / Find some words</ion-label>
+                </ion-item>
+
+              <ion-item style="background: rgba(255, 255, 255, 0); border-style: none;">
+                  <ion-radio value="rust"></ion-radio>
+                  <ion-label>ค้นหาโดยคำค้นเท่านั้น / Only keywords</ion-label>
+                </ion-item>
+              </ion-list>
+            </div> -->
+        </div>
+      </div>
+
+      <div class="btn-box">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <button class="btn btn-primary" (click)="register();">
+                ค้นหา
+                <p>Search</p>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button class="btn btn-dark" (click)="close();">
+                ยกเลิก
+                <p>Cancel</p>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </form>
 </ion-content>

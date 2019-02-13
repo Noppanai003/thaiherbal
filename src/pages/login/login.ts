@@ -5,6 +5,7 @@ import { UserPage } from '../user/user';
 import { RegisterPage } from '../register/register';
 import { ForgotpassPage } from '../forgotpass/forgotpass';
 import * as $ from "jquery";
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 /**
  * Generated class for the LoginPage page.
@@ -34,8 +35,9 @@ export class LoginPage {
     public modalController: ModalController,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-
+    public screenOrientation: ScreenOrientation,
   ) {
+    this.screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT)
 
     this.isButton = true;
   }
@@ -50,6 +52,10 @@ export class LoginPage {
     // });
   }
 
+  async ionViewDidEnter() {
+    // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+  }
+  
   loader: any
   presentLoadingLogin() {
     this.loader = this.loadingCtrl.create({
@@ -95,10 +101,12 @@ export class LoginPage {
       await this.userProvider.login(this.formLogin).subscribe(async (data: any) => {
         // console.log(data);
         if (data.login_status) {
-          await localStorage.setItem('access_token', data.access_token)
-          await localStorage.setItem('member', JSON.stringify(data.member_info))
-          this.loader.dismiss()
-          this.navCtrl.setRoot(UserPage)
+          await localStorage.setItem('access_token', await data.access_token)
+          await localStorage.setItem('member', await JSON.stringify(data.member_info))
+          if(localStorage.access_token) {
+            this.loader.dismiss()
+            this.navCtrl.setRoot(UserPage)
+          }
         } else {
           this.showAlert('เข้าสู่ระบบไม่สำเร็จ', 'ที่อยู่อีเมลหรือรหัสผ่านของคุณไม่ถูกต้อง กรุณาลองอีกครั้ง')
           this.loader.dismiss()

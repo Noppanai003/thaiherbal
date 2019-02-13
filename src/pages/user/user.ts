@@ -5,6 +5,7 @@ import { UserProvider } from '../../providers/user/user';
 import * as $ from "jquery";
 import { EditprofilePage } from '../editprofile/editprofile';
 import { EditpasswordPage } from '../editpassword/editpassword';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 /**
  * Generated class for the UserPage page.
  *
@@ -27,8 +28,9 @@ export class UserPage {
     public navParams: NavParams,
     public userProvider: UserProvider,
     public modalController: ModalController,
-
+    public screenOrientation: ScreenOrientation,
   ) {
+    this.screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT)
 
 
   }
@@ -40,6 +42,7 @@ export class UserPage {
   }
 
   async ionViewDidEnter() {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
     await this.checkToken()
     await this.loadProfile()
     this.loadPage = true

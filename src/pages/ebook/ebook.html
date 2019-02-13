@@ -24,6 +24,10 @@
       <button ion-item *ngFor="let item of listContent" (click)="(item.count == null ? viewContent(item.md_dwg_id,'','',item.md_dwg_subject):loadSubCategory(item.md_dwg_id,item.md_dwg_subject))">
         {{item.md_dwg_subject}}
       </button>
+
+      <ion-infinite-scroll (ionInfinite)="doInfiniteloadCategory($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
     </div>
 
     <div *ngIf="active == 'subcategory'">
@@ -32,10 +36,19 @@
       </button>
     </div>
 
+
+
+
+
+
     <div *ngIf="active == 'listcontent'">
       <button ion-item *ngFor="let item of listContent" (click)="viewContent(data.cid,data.gid,item.md_cms_id,data.cname);">
         {{item.md_cms_subject}}
       </button>
+
+      <ion-infinite-scroll (ionInfinite)="doInfiniteloadListContent($event,data)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
     </div>
 
 

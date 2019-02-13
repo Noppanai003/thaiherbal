@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { EbookProvider } from '../../providers/ebook/ebook';
 import { ViewebookPage } from '../viewebook/viewebook';
 import { SearchPage } from '../search/search';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 /**
  * Generated class for the EbookPage page.
@@ -25,19 +26,30 @@ export class EbookPage {
     public navParams: NavParams,
     public ebookProvider: EbookProvider,
     public modalController: ModalController,
+    public screenOrientation: ScreenOrientation,
   ) {
+    // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
   }
 
   async ionViewDidLoad() {
-    this.checkToken()
+    // this.checkToken()
     console.log('ionViewDidLoad EbookPage');
     this.dataHome = JSON.parse(localStorage.home)
 
-    await this.loadCategory()
+    
   }
 
   async ionViewDidEnter() {
+    console.log('ionViewDidEnter');
+    
+    // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
     await this.checkToken()
+  }
+
+  ionViewWillEnter() {
+    console.log('ionViewWillEnter');
+    
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
   }
 
   active: any
@@ -46,11 +58,12 @@ export class EbookPage {
     this.active = 'category'
     this.headContent = 'หมวดหมู่'
     this.data = {
-      access_token: await localStorage.access_token
+      access_token: await localStorage.getItem('access_token')
     }
     await this.ebookProvider.loadCategory(this.data).subscribe(async (data: any) => {
       // console.log(data);
       this.listContent = await data.data
+      // alert("access_token="+this.data.access_token)
     })
   }
 
@@ -62,7 +75,6 @@ export class EbookPage {
       cname: cname,
       access_token: await localStorage.access_token
     }
-
     await this.ebookProvider.loadSubCategory(this.data).subscribe(async (data: any) => {
       // console.log(data);
       this.listContent = await data.data
@@ -113,6 +125,10 @@ export class EbookPage {
           data: data
         }
         const modal = await this.modalController.create(ViewebookPage, options);
+        modal.onDidDismiss(data => {
+          console.log('onDidDismiss');
+          // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+        });
         return await modal.present();
       })
     }
@@ -126,14 +142,40 @@ export class EbookPage {
     return await modal.present();
   }
 
-  checkToken() {
-    if (!localStorage.access_token) {
+  async checkToken() {
+    
+    if(!localStorage.access_token){
       this.navCtrl.parent.select(4);
+    }else{
+      await this.loadCategory()
     }
   }
 
 
+  async doInfiniteloadListContent(infiniteScroll,data) {
+    console.log('Begin async operation');
 
+    setTimeout(async () => {
+      await this.loadListContent(data.cid,data.gid,data.cname,data.gname)
+      console.log('Async operation has ended');
+      infiniteScroll.complete();
+    }, 500);
+  }
+
+  async doInfiniteloadCategory(infiniteScroll) {
+    console.log('Begin async operation');
+
+    setTimeout(async () => {
+      let _listContent = this.listContent
+      await this.loadCategory()
+      this.listContent = await _listContent.concat(this.listContent)
+
+      console.log('Async operation has ended');
+      infiniteScroll.complete();
+    }, 500);
+  }
+  
+  
 
 
 

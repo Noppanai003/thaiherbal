@@ -19,9 +19,10 @@ export class ViewebookPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public screenOrientation: ScreenOrientation
+    public screenOrientation: ScreenOrientation,
   ) {
-    this.screenOrientation.unlock()
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.ANY);
+    
     this.dataEbook = this.navParams.data.data.data
     console.log(this.dataEbook);
 
@@ -31,7 +32,11 @@ export class ViewebookPage {
     console.log('ionViewDidLoad ViewebookPage');
   }
 
-  close() {
+  async ionViewDidEnter() {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.ANY);
+  }
+
+  async close() {
     this.navCtrl.pop()
   }
 

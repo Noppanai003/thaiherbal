@@ -29,7 +29,6 @@ import { EbookProvider } from '../providers/ebook/ebook';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 
-
 @NgModule({
   declarations: [
     MyApp,
