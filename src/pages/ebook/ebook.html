@@ -13,8 +13,10 @@
 </ion-header>
 
 
-
 <ion-content>
+
+  <ion-searchbar [(ngModel)]="form.search" (ionInput)="onInput($event)" placeholder="ค้นหาชื่อหน้าสือ"></ion-searchbar>
+
 
   <ion-item-group>
     <ion-item-divider color="light">
@@ -25,10 +27,6 @@
       <button ion-item *ngFor="let item of listContent" (click)="(item.count == null ? viewContent(item.md_dwg_id,'','',item.md_dwg_subject):loadSubCategory(item.md_dwg_id,item.md_dwg_subject))">
         {{item.md_dwg_subject}}
       </button>
-
-      <ion-infinite-scroll (ionInfinite)="doInfiniteloadCategory($event)">
-        <ion-infinite-scroll-content></ion-infinite-scroll-content>
-      </ion-infinite-scroll>
     </div>
 
     <div *ngIf="active == 'subcategory'">

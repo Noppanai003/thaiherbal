@@ -30,7 +30,7 @@ export class EbookProvider {
   }
 
   loadListContent(data) {
-    return this.http.get(this.URL_EBOOK + '?cid=' + data.cid + '&gid=' + data.gid + '&access_token=' + data.access_token)
+    return this.http.get(this.URL_EBOOK + '?cid=' + data.cid + '&gid=' + data.gid + '&page=' + data.page + '&access_token=' + data.access_token)
   }
 
   getCMS_ID(data) {

@@ -57,7 +57,7 @@ export class LoginPage {
   }
   
   loader: any
-  presentLoadingLogin() {
+  presentLoading() {
     this.loader = this.loadingCtrl.create({
       content: "Please wait...",
       duration: 3000
@@ -97,7 +97,7 @@ export class LoginPage {
     }
 
     if (this.formLogin.member_login_email && this.formLogin.member_login_password) {
-      this.presentLoadingLogin()
+      this.presentLoading()
       await this.userProvider.login(this.formLogin).subscribe(async (data: any) => {
         // console.log(data);
         if (data.login_status) {
