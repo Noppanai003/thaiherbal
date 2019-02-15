@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, LoadingController, MenuController } from 'ionic-angular';
 import { EbookProvider } from '../../providers/ebook/ebook';
 import { ViewebookPage } from '../viewebook/viewebook';
 import { SearchPage } from '../search/search';
@@ -29,7 +29,8 @@ export class EbookPage {
     public loadingCtrl: LoadingController,
     public screenOrientation: ScreenOrientation,
   ) {
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+    // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+    
   }
 
   async ionViewDidLoad() {
@@ -50,14 +51,14 @@ export class EbookPage {
   async ionViewDidEnter() {
     console.log('ionViewDidEnter');
 
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+    // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
     await this.checkToken()
   }
 
   ionViewWillEnter() {
     console.log('ionViewWillEnter');
 
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+    // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
   }
 
   active: any
@@ -143,18 +144,46 @@ export class EbookPage {
         // console.log(data);
         //VIEW CONTENT
         let options = {
-          data: data
+          data: data,
+          ebooks: true
         }
-        const modal = await this.modalController.create(ViewebookPage, options);
-        modal.onDidDismiss(data => {
-          console.log('onDidDismiss');
-          this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
-        });
-        await modal.present();
+        this.navCtrl.push(ViewebookPage, options)
+        // const modal = await this.modalController.create(ViewebookPage, options);
+        // modal.onDidDismiss(data => {
+        //   console.log('onDidDismiss');
+        //   // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+        // });
+        // await modal.present();
         this.loader.dismiss()
         return;
       })
     }
+  }
+
+  async loadFirstContent(){
+    this.presentLoading()
+    this.data = {
+      access_token: await localStorage.access_token
+    }
+    await this.ebookProvider.loadFirstContent(this.data).subscribe(async (data: any) => {
+      // console.log(data);
+      //VIEW CONTENT
+      let options = {
+        data: data,
+        ebooks: true
+      }
+      this.navCtrl.setRoot(ViewebookPage, options)
+      this.loader.dismiss()
+      /*
+      const modal = await this.modalController.create(ViewebookPage, options);
+      modal.onDidDismiss(data => {
+        console.log('onDidDismiss');
+        // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+      });
+      await modal.present();
+      this.loader.dismiss()*/
+      return;
+    })
   }
 
   async search() {
@@ -171,7 +200,7 @@ export class EbookPage {
         this.loader.dismiss()
       })
     });
-    return await modal.present();
+    // return await modal.present();
   }
 
   async checkToken() {
@@ -179,7 +208,9 @@ export class EbookPage {
     if (!localStorage.access_token) {
       this.navCtrl.parent.select(4);
     } else {
-      await this.loadCategory()
+      // await this.loadCategory()
+      await this.loadFirstContent()
+      
     }
   }
 

@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class EbookProvider {
   URL_EBOOK = 'https://bdn.go.th/thp/api/ebooks/'
-
+  URL_FIRSTEBOOK = 'https://bdn.go.th/thp/api/firstebook/'
   URL_CATEGORYS = 'https://bdn.go.th/thp/api/categorys/'
   URL_SUBCATEGORYS = 'https://bdn.go.th/thp/api/subcategorys/'
 
@@ -44,7 +44,14 @@ export class EbookProvider {
     headers.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT');
     return this.http.post(this.URL_EBOOK + data.cms_id, JSON.stringify(data), { headers: headers })
   }
-
+  
+  loadFirstContent(data) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT');
+    return this.http.post(this.URL_FIRSTEBOOK, JSON.stringify(data), { headers: headers })
+  }
   search(data) {
     return this.http.get(this.URL_SHERCH + '?catagory=' + data.catagory + '&subcatagory=' + data.subcatagory + '&keytype=' + data.keytype + '&search=' + data.search + '&searchby=' + data.searchby + '&page=' + data.page + '&access_token=' + data.access_token)
   }

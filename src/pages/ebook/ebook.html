@@ -4,6 +4,10 @@
     <i *ngIf="active == 'listcontent'" class="fa fa-chevron-left goBack" (click)="loadSubCategory(data.cid,data.cname);"></i>
     <i *ngIf="active == 'listsearchcontent'" class="fa fa-chevron-left goBack" (click)="loadCategory();"></i>
     <i class="fa fa-search iconRight" aria-hidden="true" (click)="search();"></i>
+
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title align="center">
       <img src="{{ dataHome?.logo }}" class="title-logo">
       <span class="title-header">Thai Herbal</span>
@@ -12,10 +16,9 @@
 
 </ion-header>
 
-
 <ion-content>
 
-  <ion-searchbar [(ngModel)]="form.search" (ionInput)="onInput($event)" placeholder="ค้นหาชื่อหน้าสือ"></ion-searchbar>
+  <!-- <ion-searchbar [(ngModel)]="form.search" (ionInput)="onInput($event)" placeholder="ค้นหาชื่อหน้าสือ"></ion-searchbar> -->
 
 
   <ion-item-group>

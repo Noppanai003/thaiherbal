@@ -1,6 +1,11 @@
 <ion-header>
   <ion-navbar>
-    <i class="fa fa-chevron-left goBack" (click)="close();"></i>
+    <i *ngIf="isFirst" class="fa fa-chevron-left goBack" (click)="close('true');"></i>
+    <i *ngIf="!isFirst" class="fa fa-chevron-left goBack" (click)="close('false');"></i>
+    
+    <button ion-button menuToggle end class="iconRight"> 
+      <ion-icon name="menu" style="color:white;"></ion-icon>
+    </button>
     <ion-title align="center">
       <span class="title-header" style="font-size: 19px;">{{dataEbook?.md_cms_subject}}</span>
     </ion-title>

@@ -1,1 +1,56 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content" side="end">
+  <ion-header>
+    <ion-navbar>
+      <i *ngIf="active == 'subcategory'" class="fa fa-chevron-left goBack" (click)="loadCategory();"></i>
+      <i *ngIf="active == 'listcontent'" class="fa fa-chevron-left goBack" (click)="loadSubCategory(data.cid,data.cname);"></i>
+      <i *ngIf="active == 'listsearchcontent'" class="fa fa-chevron-left goBack" (click)="loadCategory();"></i>
+      <ion-title align="center">
+        <span class="title-header">{{headContent}}</span>
+      </ion-title>
+    </ion-navbar>
+
+  </ion-header>
+
+  <ion-content>
+    <ion-list *ngIf="active == 'category'">
+      <button ion-item *ngFor="let item of listContent" (click)="(item.count == null ? viewContent(item.md_dwg_id,'','',item.md_dwg_subject):loadSubCategory(item.md_dwg_id,item.md_dwg_subject))">
+        {{item.md_dwg_subject}}
+      </button>
+
+      <!-- <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+              <ion-icon [name]="p.iconmenu"></ion-icon>
+              {{p.title}}
+            </button> -->
+    </ion-list>
+
+
+    <ion-list *ngIf="active == 'subcategory'">
+      <button ion-item *ngFor="let item of listContent" (click)="loadListContent(data.cid,item.md_dws_id,data.cname,item.md_dws_subject);">
+        {{item.md_dws_subject}}
+      </button>
+    </ion-list>
+
+    <ion-list *ngIf="active == 'listcontent'">
+      <button menuClose ion-item *ngFor="let item of listContent" (click)="viewContent(data.cid,data.gid,item.md_cms_id,data.cname);">
+        {{item.md_cms_subject}}
+      </button>
+
+      <ion-infinite-scroll (ionInfinite)="doInfiniteloadListContent($event,data)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-list>
+
+    <ion-list *ngIf="active == 'listsearchcontent'">
+      <button menuClose ion-item *ngFor="let item of listContent" (click)="viewContent(item.md_cms_cid,item.md_cms_gid,item.md_cms_id,'');">
+        {{item.md_cms_subject}}
+      </button>
+    </ion-list>
+
+  </ion-content>
+</ion-menu>
+
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+<!-- <ion-nav [root]="rootPage"></ion-nav> -->

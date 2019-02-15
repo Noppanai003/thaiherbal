@@ -18,7 +18,7 @@ export class HomePage {
   // contact: Array<any>;
   // logo: any;
   dataHome: any;
-
+  tabBarElement: any;
   constructor(
     public navCtrl: NavController,
     public homeProvider: HomeProvider,
@@ -26,16 +26,20 @@ export class HomePage {
     public loadingCtrl: LoadingController,
   ) {
     this.screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT)
+    
+    // this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
   }
 
   async ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
-    this.presentLoading()
+    this.presentLoading()    
     await this.homeProvider.loadHome().subscribe(async (data: any) => {
       await localStorage.setItem('home', JSON.stringify(data));
       this.dataHome = JSON.parse(localStorage.home)
       this.loader.dismiss()
     })
+    
+    
   }
 
   loader: any
@@ -49,7 +53,13 @@ export class HomePage {
 
   async ionViewDidEnter() {
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+    
+    // this.tabBarElement.style.display = 'block';
   }
 
+  ionViewWillEnter() {
+    console.log('ionViewWillEnter');
+    // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+  }
 
 }

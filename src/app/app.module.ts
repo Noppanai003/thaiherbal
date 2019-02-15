@@ -27,6 +27,7 @@ import { HomeProvider } from '../providers/home/home';
 import { UserProvider } from '../providers/user/user';
 import { EbookProvider } from '../providers/ebook/ebook';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { SidemenuPage } from '../pages/sidemenu/sidemenu';
 
 
 @NgModule({
@@ -46,12 +47,13 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
     EditpasswordPage,
     EditprofilePage,
     SearchPage,
+    SidemenuPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -70,6 +72,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
     EditpasswordPage,
     EditprofilePage,
     SearchPage,
+    SidemenuPage,
   ],
   providers: [
     StatusBar,
