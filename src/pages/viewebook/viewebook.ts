@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { TabsPage } from '../tabs/tabs';
 /**
  * Generated class for the ViewebookPage page.
  *
@@ -25,43 +26,58 @@ export class ViewebookPage {
     public screenOrientation: ScreenOrientation,
   ) {
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.ANY);
-    
+
     this.dataEbook = this.navParams.data.data.data
     this.isFirst = this.navParams.data.ebooks
-    console.log(this.navParams);
-    
+    // console.log(this.navParams);
+
     this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
-    // document.querySelector("ion-tabbar")['style'].display = 'none';
+    
+    if(this.tabBarElement) this.tabBarElement.style.display = 'none';
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewebookPage');
-    this.viewCtrl.showBackButton(false); 
-    this.tabBarElement.style.display = 'none';
+    this.viewCtrl.showBackButton(false);
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.ANY);
+    if(this.tabBarElement) this.tabBarElement.style.display = 'none';
   }
 
   async ionViewDidEnter() {
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.ANY);
-    
-    this.tabBarElement.style.display = 'none';
+    if(this.tabBarElement) this.tabBarElement.style.display = 'none';
+    this.checkToken()
   }
 
-  async close(ebooks='false') {
+  async close(ebooks = 'false') {
     console.log(ebooks);
-    
-    this.tabBarElement.style.display = 'flex';
-    if(ebooks == 'true'){
+    if(this.tabBarElement) this.tabBarElement.style.display = 'flex';
+    else{
+      this.navCtrl.setRoot(TabsPage)
+      return true;
+    }
+    if (ebooks == 'true') {
+      // this.navCtrl.push(HomePage)
       this.navCtrl.parent.select(0)
-      this.navCtrl.popToRoot()
-    }else{
-      
-      this.tabBarElement.style.display = 'none';
-      this.navCtrl.popToRoot()
+    } else {
+      // this.tabBarElement.style.display = 'none';
+      // this.navCtrl.popToRoot()
+      this.navCtrl.setRoot(TabsPage)
     }
   }
 
-  // ionViewWillLeave() {
-  //   this.tabBarElement.style.display = 'flex';
-  //   console.log('ionViewWillLeave');
-  // }
+  ionViewWillLeave() {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+    if(this.tabBarElement) this.tabBarElement.style.display = 'flex';
+    console.log('ionViewWillLeave');
+  }
+
+  async checkToken() {
+    if (!localStorage.access_token) {
+      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+      // this.tabBarElement.style.display = 'flex';
+      if(this.isFirst) this.navCtrl.parent.select(4);
+      else this.navCtrl.setRoot(TabsPage)
+    }
+  }
 }

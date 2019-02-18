@@ -23,6 +23,7 @@ export class UserPage {
   dataHome: any;
   dataProfile: any;
   loadPage = false
+  tabBarElement: any
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -32,12 +33,13 @@ export class UserPage {
   ) {
     this.screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT)
 
-
+    this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserPage');
     this.dataHome = JSON.parse(localStorage.home)
+    this.tabBarElement.style.display = 'flex';
 
   }
 
@@ -48,8 +50,10 @@ export class UserPage {
     this.loadPage = true
   }
 
-  checkToken() {
+  async checkToken() {
     if (!localStorage.access_token) {
+      // const modal = await this.modalController.create(LoginPage);
+      // return await modal.present();
       this.navCtrl.setRoot(LoginPage);
     }
   }

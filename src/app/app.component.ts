@@ -7,6 +7,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { EbookPage } from '../pages/ebook/ebook';
 import { EbookProvider } from '../providers/ebook/ebook';
 import { ViewebookPage } from '../pages/viewebook/viewebook';
+import { SearchPage } from '../pages/search/search';
 // import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @Component({
@@ -32,6 +33,7 @@ export class MyApp {
     // screenOrientation: ScreenOrientation,
   ) {
     this.initializeApp();
+    
  
     // used for an example of ngFor and navigation
     this.pages = [
@@ -63,21 +65,27 @@ export class MyApp {
       this.splashScreen.hide();
     });
 
+    this.presentLoading()
     this.loadCategory()
   }
- 
-  openPage(page) {
-    // this.nav.push(page.component);
-  }
+
+  // openPage(page) {
+  //   // this.nav.push(page.component);
+  // }
 
   active: any
   data: any
   async loadCategory() {
-    this.presentLoading()
+    let access_token = await localStorage.getItem('access_token')
+    if(!access_token || access_token == null || access_token == ''){
+      setTimeout(() => {
+        this.loadCategory()
+      }, 1000);
+    }
     this.active = 'category'
     this.headContent = 'หมวดหมู่'
     this.data = {
-      access_token: await localStorage.getItem('access_token')
+      access_token: access_token
     }
     await this.ebookProvider.loadCategory(this.data).subscribe(async (data: any) => {
       // console.log(data);
@@ -158,13 +166,13 @@ export class MyApp {
         let options = {
           data: data
         }
-        this.nav.push(ViewebookPage, options)
-        /*const modal = await this.modalController.create(ViewebookPage, options);
-        modal.onDidDismiss(data => {
-          console.log('onDidDismiss');
-          // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
-        });
-        await modal.present();*/
+        this.nav.setRoot(ViewebookPage, options)
+        // const modal = await this.modalController.create(ViewebookPage, options);
+        // modal.onDidDismiss(data => {
+        //   console.log('onDidDismiss');
+        //   // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+        // });
+        // await modal.present();
         this.loader.dismiss()
         return;
       })
@@ -180,6 +188,23 @@ export class MyApp {
       await this.loadListContent(data.cid, data.gid, data.cname, data.gname, this.nextpage, true)
       infiniteScroll.complete();
     }, 500);
+  }
+  
+  async search() {
+    const modal = await this.modalController.create(SearchPage);
+    modal.onDidDismiss(async data => {
+      if(!data) return;
+      
+      this.presentLoading()
+      await this.ebookProvider.search(data).subscribe(async (data: any) => {
+        console.log(data);
+        this.active = 'listsearchcontent'
+        this.headContent = 'ผลลัพธ์จากการค้นหา'
+        this.listContent = await data.data
+        this.loader.dismiss()
+      })
+    });
+    return await modal.present();
   }
 
 }

@@ -28,6 +28,7 @@ export class LoginPage {
     member_login_password: '',
   }
   isButton: boolean;
+  tabBarElement: any
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -40,12 +41,15 @@ export class LoginPage {
     this.screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT)
 
     this.isButton = true;
+    this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
   }
 
   async ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
     this.checkToken()
     this.dataHome = JSON.parse(localStorage.home);
+    
+    this.tabBarElement.style.display = 'flex';
     // let _this = this;
     // $( "input" ).change(function() {
     //   _this.eventInput();
@@ -55,7 +59,7 @@ export class LoginPage {
   async ionViewDidEnter() {
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
   }
-  
+
   loader: any
   presentLoading() {
     this.loader = this.loadingCtrl.create({
@@ -103,9 +107,10 @@ export class LoginPage {
         if (data.login_status) {
           await localStorage.setItem('access_token', await data.access_token)
           await localStorage.setItem('member', await JSON.stringify(data.member_info))
-          if(localStorage.access_token) {
+          if (localStorage.access_token) {
             this.loader.dismiss()
             this.navCtrl.setRoot(UserPage)
+            // this.navCtrl.parent.select(2)
           }
         } else {
           this.showAlert('เข้าสู่ระบบไม่สำเร็จ', 'ที่อยู่อีเมลหรือรหัสผ่านของคุณไม่ถูกต้อง กรุณาลองอีกครั้ง')

@@ -27,7 +27,8 @@ export class HomePage {
   ) {
     this.screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT)
     
-    // this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
+    this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
+
   }
 
   async ionViewDidLoad() {
@@ -37,8 +38,12 @@ export class HomePage {
       await localStorage.setItem('home', JSON.stringify(data));
       this.dataHome = JSON.parse(localStorage.home)
       this.loader.dismiss()
+      console.log(this.dataHome);
+      
     })
     
+    
+    if(this.tabBarElement) this.tabBarElement.style.display = 'flex';
     
   }
 
@@ -52,14 +57,16 @@ export class HomePage {
   }
 
   async ionViewDidEnter() {
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
     
-    // this.tabBarElement.style.display = 'block';
+    if(this.tabBarElement) this.tabBarElement.style.display = 'flex';
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
   }
 
   ionViewWillEnter() {
+    
+    if(this.tabBarElement) this.tabBarElement.style.display = 'flex';
     console.log('ionViewWillEnter');
-    // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
   }
 
 }

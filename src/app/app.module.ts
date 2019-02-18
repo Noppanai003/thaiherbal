@@ -27,7 +27,8 @@ import { HomeProvider } from '../providers/home/home';
 import { UserProvider } from '../providers/user/user';
 import { EbookProvider } from '../providers/ebook/ebook';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
-import { SidemenuPage } from '../pages/sidemenu/sidemenu';
+
+import { SafeHtmlPipe } from '../pipes/safe-html/safe-html';
 
 
 @NgModule({
@@ -47,7 +48,7 @@ import { SidemenuPage } from '../pages/sidemenu/sidemenu';
     EditpasswordPage,
     EditprofilePage,
     SearchPage,
-    SidemenuPage,
+    SafeHtmlPipe,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +73,6 @@ import { SidemenuPage } from '../pages/sidemenu/sidemenu';
     EditpasswordPage,
     EditprofilePage,
     SearchPage,
-    SidemenuPage,
   ],
   providers: [
     StatusBar,

@@ -2,6 +2,10 @@
   <ion-navbar>
     <i *ngIf="isFirst" class="fa fa-chevron-left goBack" (click)="close('true');"></i>
     <i *ngIf="!isFirst" class="fa fa-chevron-left goBack" (click)="close('false');"></i>
+    <!-- <button ion-button menuToggle start class="iconRight"> 
+      <i *ngIf="isFirst" class="fa fa-chevron-left goBack" style="color:white;" (click)="close('true');"></i>
+      <i *ngIf="!isFirst" class="fa fa-chevron-left goBack" style="color:white;" (click)="close('false');"></i>
+    </button> -->
     
     <button ion-button menuToggle end class="iconRight"> 
       <ion-icon name="menu" style="color:white;"></ion-icon>
@@ -23,7 +27,7 @@
     <span *ngIf="dataEbook?.md_cms_title != ''"><br><b>Synonyms </b>{{dataEbook?.md_cms_title}}</span>
     <span *ngIf="dataEbook?.md_cms_category != ''"><br><b>Category </b>{{dataEbook?.md_cms_category}}</span>
   </p>
-  <div [innerHTML]="dataEbook?.html_content" class="ck-detail"></div>
+  <div [innerHTML]="dataEbook?.html_content | safeHtml" class="ck-detail"></div>
 
   
 </ion-content>
