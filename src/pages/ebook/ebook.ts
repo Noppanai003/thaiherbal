@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, ModalController, LoadingController
 import { EbookProvider } from '../../providers/ebook/ebook';
 import { ViewebookPage } from '../viewebook/viewebook';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
-import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the EbookPage page.
@@ -21,7 +20,7 @@ export class EbookPage {
   // dataHome: any;
   // headContent: any
   // listContent: any
-  tabBarElement: any
+  // tabBarElement: any // ปิดไว้กลัวว่าวันนึงเค้าจะกลับมาใช้อีก TT
   data: any
   constructor(
     public navCtrl: NavController,
@@ -33,13 +32,14 @@ export class EbookPage {
   ) {
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
 
-    this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
+    // this.tabBarElement = document.querySelector('.tabbar.show-tabbar'); // ปิดไว้กลัวว่าวันนึงเค้าจะกลับมาใช้อีก TT
   }
 
+  queueEbook: any;
   async ionViewDidLoad() {
     // this.checkToken()
     console.log('ionViewDidLoad EbookPage');
-    
+    localStorage.setItem('queueEbook','')
     // this.tabBarElement.style.display = 'none';
     // this.dataHome = JSON.parse(localStorage.home)
   }
@@ -55,7 +55,7 @@ export class EbookPage {
 
   async ionViewDidEnter() {
     console.log('ionViewDidEnter');
-    this.tabBarElement.style.display = 'none';
+    // this.tabBarElement.style.display = 'none'; // ปิดไว้กลัวว่าวันนึงเค้าจะกลับมาใช้อีก TT
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
     await this.checkToken()
   }
@@ -173,13 +173,20 @@ export class EbookPage {
     await this.ebookProvider.loadFirstContent(this.data).subscribe(async (data: any) => {
       // console.log(data);
       //VIEW CONTENT
+      
       let options = {
         data: data,
-        ebooks: true
+        first: true
       }
+      // if(!localStorage.queueEbook || localStorage.queueEbook == ""){
+      //   this.queueEbook = [];
+      // }
+      await localStorage.setItem('queueEbook',JSON.stringify([options]))
+      this.queueEbook = await localStorage.getItem('queueEbook')
+      // console.log("this.queueEbook",JSON.parse(this.queueEbook)[0]);
       
-      this.tabBarElement.style.display = 'none';
-      this.navCtrl.setRoot(ViewebookPage, options)
+      // this.tabBarElement.style.display = 'none'; // ปิดไว้กลัวว่าวันนึงเค้าจะกลับมาใช้อีก TT
+      this.navCtrl.setRoot(ViewebookPage, JSON.parse(this.queueEbook)[0])
       this.loader.dismiss()
 
       // const modal = await this.modalController.create(ViewebookPage, options);
@@ -213,13 +220,13 @@ export class EbookPage {
   async checkToken() {
     this.presentLoading()
     
-    if(this.tabBarElement) this.tabBarElement.style.display = 'none';
+    // if(this.tabBarElement) this.tabBarElement.style.display = 'none'; // ปิดไว้กลัวว่าวันนึงเค้าจะกลับมาใช้อีก TT
     if (!localStorage.access_token) {
       this.loader.dismiss()
-      if(this.tabBarElement) this.tabBarElement.style.display = 'flex';
+      // if(this.tabBarElement) this.tabBarElement.style.display = 'flex'; // ปิดไว้กลัวว่าวันนึงเค้าจะกลับมาใช้อีก TT
       this.navCtrl.parent.select(4);
     } else {
-      if(this.tabBarElement) this.tabBarElement.style.display = 'none';
+      // if(this.tabBarElement) this.tabBarElement.style.display = 'none'; // ปิดไว้กลัวว่าวันนึงเค้าจะกลับมาใช้อีก TT
       this.loader.dismiss()
       // await this.loadCategory()
       await this.loadFirstContent()

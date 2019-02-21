@@ -23,7 +23,7 @@ export class UserPage {
   dataHome: any;
   dataProfile: any;
   loadPage = false
-  tabBarElement: any
+  // tabBarElement: any // ปิดไว้กลัวว่าวันนึงเค้าจะกลับมาใช้อีก TT
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -33,13 +33,13 @@ export class UserPage {
   ) {
     this.screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT)
 
-    this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
+    // this.tabBarElement = document.querySelector('.tabbar.show-tabbar'); // ปิดไว้กลัวว่าวันนึงเค้าจะกลับมาใช้อีก TT
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserPage');
     this.dataHome = JSON.parse(localStorage.home)
-    this.tabBarElement.style.display = 'flex';
+    // this.tabBarElement.style.display = 'flex'; // ปิดไว้กลัวว่าวันนึงเค้าจะกลับมาใช้อีก TT
 
   }
 

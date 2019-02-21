@@ -18,7 +18,7 @@ export class HomePage {
   // contact: Array<any>;
   // logo: any;
   dataHome: any;
-  tabBarElement: any;
+  // tabBarElement: any; // ปิดไว้กลัวว่าวันนึงเค้าจะกลับมาใช้อีก TT
   constructor(
     public navCtrl: NavController,
     public homeProvider: HomeProvider,
@@ -27,7 +27,7 @@ export class HomePage {
   ) {
     this.screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT)
     
-    this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
+    // this.tabBarElement = document.querySelector('.tabbar.show-tabbar'); // ปิดไว้กลัวว่าวันนึงเค้าจะกลับมาใช้อีก TT
 
   }
 
@@ -38,12 +38,12 @@ export class HomePage {
       await localStorage.setItem('home', JSON.stringify(data));
       this.dataHome = JSON.parse(localStorage.home)
       this.loader.dismiss()
-      console.log(this.dataHome);
+      // console.log(this.dataHome);
       
     })
     
     
-    if(this.tabBarElement) this.tabBarElement.style.display = 'flex';
+    // if(this.tabBarElement) this.tabBarElement.style.display = 'flex'; // ปิดไว้กลัวว่าวันนึงเค้าจะกลับมาใช้อีก TT
     
   }
 
@@ -58,13 +58,13 @@ export class HomePage {
 
   async ionViewDidEnter() {
     
-    if(this.tabBarElement) this.tabBarElement.style.display = 'flex';
+    // if(this.tabBarElement) this.tabBarElement.style.display = 'flex'; // ปิดไว้กลัวว่าวันนึงเค้าจะกลับมาใช้อีก TT
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
   }
 
   ionViewWillEnter() {
     
-    if(this.tabBarElement) this.tabBarElement.style.display = 'flex';
+    // if(this.tabBarElement) this.tabBarElement.style.display = 'flex'; // ปิดไว้กลัวว่าวันนึงเค้าจะกลับมาใช้อีก TT
     console.log('ionViewWillEnter');
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
   }

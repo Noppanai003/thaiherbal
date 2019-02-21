@@ -34,7 +34,7 @@ export class EbookProvider {
   }
 
   getCMS_ID(data) {
-    return this.http.get(this.URL_EBOOK + '?cid=' + data.cid + '&type=getCMS_ID&access_token=' + data.access_token)
+    return this.http.get(this.URL_EBOOK + '?cid=' + data.cid + '&gid=' + data.gid + '&type=getCMS_ID&access_token=' + data.access_token)
   }
 
   loadContent(data) {

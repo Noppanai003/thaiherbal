@@ -8,7 +8,7 @@ import { EbookPage } from '../pages/ebook/ebook';
 import { EbookProvider } from '../providers/ebook/ebook';
 import { ViewebookPage } from '../pages/viewebook/viewebook';
 import { SearchPage } from '../pages/search/search';
-// import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @Component({
   templateUrl: 'app.html'
@@ -25,12 +25,10 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-
-    
     public ebookProvider: EbookProvider,
     public modalController: ModalController,
     public loadingCtrl: LoadingController,
-    // screenOrientation: ScreenOrientation,
+    public screenOrientation: ScreenOrientation,
   ) {
     this.initializeApp();
     
@@ -105,7 +103,7 @@ export class MyApp {
       access_token: await localStorage.access_token
     }
     await this.ebookProvider.loadSubCategory(this.data).subscribe(async (data: any) => {
-      // console.log(data);
+      console.log(data);
       this.listContent = await data.data
       this.loader.dismiss()
     })
@@ -142,7 +140,7 @@ export class MyApp {
     })
   }
 
-
+  queueEbook: any;
   async viewContent(cid = '', gid = '', cms_id = '', cname = '') {
     this.presentLoading()
     this.data = {
@@ -163,14 +161,21 @@ export class MyApp {
       await this.ebookProvider.loadContent(this.data).subscribe(async (data: any) => {
         // console.log(data);
         //VIEW CONTENT
+        
+        this.queueEbook = await JSON.parse(await localStorage.getItem('queueEbook'))
         let options = {
           data: data
         }
-        this.nav.setRoot(ViewebookPage, options)
+        await this.queueEbook.push(options)
+        
+        await localStorage.setItem('queueEbook',await JSON.stringify(this.queueEbook))
+        // console.log(" this.queueEbook[this.queueEbook.length-1]", this.queueEbook[this.queueEbook.length-1]);
+        
+        // this.nav.setRoot(ViewebookPage, this.queueEbook[this.queueEbook.length-1])
         // const modal = await this.modalController.create(ViewebookPage, options);
         // modal.onDidDismiss(data => {
         //   console.log('onDidDismiss');
-        //   // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+        //   this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
         // });
         // await modal.present();
         this.loader.dismiss()
@@ -197,7 +202,7 @@ export class MyApp {
       
       this.presentLoading()
       await this.ebookProvider.search(data).subscribe(async (data: any) => {
-        console.log(data);
+        // console.log(data);
         this.active = 'listsearchcontent'
         this.headContent = 'ผลลัพธ์จากการค้นหา'
         this.listContent = await data.data

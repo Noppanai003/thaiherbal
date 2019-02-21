@@ -15,7 +15,7 @@
 
   <ion-content>
     <ion-list *ngIf="active == 'category'">
-      <button ion-item *ngFor="let item of listContent" (click)="(item.count == null ? viewContent(item.md_dwg_id,'','',item.md_dwg_subject):loadSubCategory(item.md_dwg_id,item.md_dwg_subject))">
+      <button ion-item *ngFor="let item of listContent" [menuClose]="item.count != null" (click)="(item.count == null ? viewContent(item.md_dwg_id,'','',item.md_dwg_subject):loadSubCategory(item.md_dwg_id,item.md_dwg_subject))">
         {{item.md_dwg_subject}}
       </button>
 
@@ -27,7 +27,7 @@
 
 
     <ion-list *ngIf="active == 'subcategory'">
-      <button ion-item *ngFor="let item of listContent" (click)="loadListContent(data.cid,item.md_dws_id,data.cname,item.md_dws_subject);">
+      <button ion-item *ngFor="let item of listContent" [menuClose]="item.countContent > 1" (click)="(item.countContent == 1 ? viewContent('',item.md_dws_id,'',item.md_dws_subject):loadListContent(data.cid,item.md_dws_id,data.cname,item.md_dws_subject))">
         {{item.md_dws_subject}}
       </button>
     </ion-list>
