@@ -3,30 +3,41 @@ page-viewebook {
     background: #fff !important;
   }
 
+  img {
+    height: auto !important;
+  }
 
-  .content-md .title{
+  .text-secondary {
+    color: #9d6d01;
+  }
+
+  .text-primary {
+    color: #64903a;
+  }
+
+  .content-md .title {
     font-size: 3rem;
   }
 
-  .content-ios .title{
+  .content-ios .title {
     font-size: 2.5rem;
   }
 
-  .content-md .ck-detail{
+  .content-md .ck-detail {
     font-size: 2.5rem;
   }
 
-  .content-ios .ck-detail{
+  .content-ios .ck-detail {
     font-size: 2.2rem;
   }
-  
-  .content-md .subtitle{
+
+  .content-md .subtitle {
     font-weight: normal;
     font-size: 2.5rem;
     margin-top: 0px;
   }
 
-  .content-ios .subtitle{
+  .content-ios .subtitle {
     font-weight: normal;
     font-size: 2.2rem;
     margin-top: 0px;

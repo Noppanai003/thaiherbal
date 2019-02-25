@@ -6,7 +6,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import { EbookPage } from '../pages/ebook/ebook';
 import { EbookProvider } from '../providers/ebook/ebook';
-import { ViewebookPage } from '../pages/viewebook/viewebook';
 import { SearchPage } from '../pages/search/search';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
@@ -142,7 +141,7 @@ export class MyApp {
 
   queueEbook: any;
   async viewContent(cid = '', gid = '', cms_id = '', cname = '') {
-    this.presentLoading()
+    
     this.data = {
       cid: cid,
       gid: gid,
@@ -151,13 +150,13 @@ export class MyApp {
       access_token: await localStorage.access_token
     }
     if (!cms_id || cms_id == '') {
+      this.presentLoading()
       await this.ebookProvider.getCMS_ID(this.data).subscribe(async (data: any) => {
         if (data.status) {
           this.viewContent('', '', data.data.md_cms_id)
         }
       })
     } else {
-
       await this.ebookProvider.loadContent(this.data).subscribe(async (data: any) => {
         // console.log(data);
         //VIEW CONTENT

@@ -23,15 +23,13 @@
 
 
 <ion-content padding>
-  <h2 class="title">{{dataEbook?.md_cms_subject}}</h2>
-  <p class="subtitle">
-    <span *ngIf="dataEbook?.md_cms_othername != ''">{{dataEbook?.md_cms_othername}}<br></span>
-    <span *ngIf="dataEbook?.md_cms_author != ''">{{dataEbook?.md_cms_author}}<br></span>
-    <span *ngIf="dataEbook?.md_cms_engname != ''">{{dataEbook?.md_cms_engname}}<br></span>
-    <span *ngIf="dataEbook?.md_cms_title != ''"><br><b>Synonyms </b>{{dataEbook?.md_cms_title}}</span>
-    <span *ngIf="dataEbook?.md_cms_category != ''"><br><b>Category </b>{{dataEbook?.md_cms_category}}</span>
-  </p>
-  <div [innerHTML]="dataEbook?.html_content | safeHtml" class="ck-detail"></div>
-
-  
+    <h2 class="title text-secondary">{{dataEbook?.md_cms_subject}}</h2>
+    <p class="subtitle text-primary">
+      <span *ngIf="dataEbook?.md_cms_othername != ''">{{dataEbook?.md_cms_othername}}<br></span>
+      <span *ngIf="dataEbook?.md_cms_author != ''">{{dataEbook?.md_cms_author}}<br></span>
+      <span *ngIf="dataEbook?.md_cms_engname != ''">{{dataEbook?.md_cms_engname}}<br></span>
+      <span *ngIf="dataEbook?.md_cms_title != ''"><b>Synonyms </b>{{dataEbook?.md_cms_title}}<br></span>
+      <span *ngIf="dataEbook?.md_cms_category != ''"><b>Category </b>{{dataEbook?.md_cms_category}}</span>
+    </p>
+    <div [innerHTML]="dataEbook?.html_content | safeHtml" class="ck-detail"></div>
 </ion-content>

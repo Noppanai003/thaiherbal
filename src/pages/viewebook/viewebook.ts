@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController, Content } from 'ionic-angular';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { TabsPage } from '../tabs/tabs';
 /**
@@ -16,6 +16,7 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class ViewebookPage {
 
+  @ViewChild(Content) content: Content;
   dataEbook: any;
   isFirst = false
   queueEbook: any;
@@ -50,6 +51,9 @@ export class ViewebookPage {
     // console.log("this.dataEbook",this.dataEbook);
     this.isFirst = await this.queueEbook[this.queueEbook.length-1].first //this.navParams.data.first
     // console.log('viewebook',this.queueEbook[this.queueEbook.length-1]);
+    
+    this.content.scrollToTop();
+
     let _this = this;
     setInterval(async function () {  
       this.queueEbook = await JSON.parse(await localStorage.getItem('queueEbook'))
@@ -100,6 +104,7 @@ export class ViewebookPage {
       // this.viewCtrl.dismiss()
       
       this.presentLoading()
+      this.content.scrollToTop();
       this.queueEbook = await JSON.parse(await localStorage.getItem('queueEbook'))
       await this.queueEbook.pop();
       await localStorage.setItem('queueEbook',await JSON.stringify(this.queueEbook))

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { UserProvider } from '../../providers/user/user';
 import * as $ from "jquery";
@@ -29,6 +29,7 @@ export class UserPage {
     public navParams: NavParams,
     public userProvider: UserProvider,
     public modalController: ModalController,
+    public loadingCtrl: LoadingController,
     public screenOrientation: ScreenOrientation,
   ) {
     this.screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT)
@@ -72,6 +73,7 @@ export class UserPage {
 
   image: any;
   async upload(str: any) {
+    this.presentLoading()
     await this.checkToken()
     const formData = new FormData();
     this.image = str.target.files[0];
@@ -85,6 +87,7 @@ export class UserPage {
         await this.loadProfile()
       }
     })
+    this.loader.dismiss()
   }
 
   clickuploadProfile() {
@@ -108,4 +111,14 @@ export class UserPage {
     const modal = await this.modalController.create(EditpasswordPage);
     return await modal.present();
   }
+
+  loader: any
+  presentLoading() {
+    this.loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      duration: 3000
+    });
+    this.loader.present();
+  }
+  
 }
